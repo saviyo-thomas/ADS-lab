@@ -1,5 +1,6 @@
 //stack using linked list
-#include<stdio.h
+#include<stdio.h>
+#include<stdlib.h>
 
 typedef struct node{
 	int d;
@@ -13,13 +14,14 @@ void clrscr(){
 
 n* createnode(int d){
   n* nn=(n*)malloc(sizeof(n));
-  nn->id=d;
+  nn->d=d;
   nn->next=NULL;
   return nn;
 }
 void push(n** h);
 void pop(n** h);
 void peek(n** h);
+void wait();
 
 int main(){
 	n* head=NULL;
@@ -27,14 +29,14 @@ int main(){
   int c;
   while(1){
     clrscr();
-    printf("\n1.Push\n2.Pop\n3.Peek\n4.Exit");
+    printf("\n1.Push\n2.Pop\n3.Peek\n4.Exit\nEnter choice :");
     scanf("%d",&c);
 
     switch(c){
       case 1:{push(&head); break;}
       case 2:{pop(&head); break;}
       case 3:{peek(&head); break;}
-      case 4:return;
+      case 4:return 0;
       default:{printf("\n Enter a valid input");}
   }}
 	return 0;
@@ -51,16 +53,26 @@ void push (n** h){
 }
 
 void pop (n** h){
-  if(*h=NULL){printf("!!Stack Underflow!!");}
-  else{printf("%d popped",h->d);}
+  if(*h==NULL){printf("!!Stack Underflow!!");}
+  else{printf("%d popped",(*h)->d);}
   n* t=*h;
-  h=h->next;
+  *h=(*h)->next;
   free(t);
+  wait();
   return;
 }
 
 void peek(n** h){
-  if(*h=NULL){printf("!!Stack Underflow!!");}
-  else{printf("%d is at the top",h->d);}
+  if(*h==NULL){printf("!!Stack Underflow!!");}
+  else{printf("%d is at the top",(*h)->d);}
+  wait();
+  return;
+}
+
+void wait(){
+  printf("\nPress Enter to continue");
+  int ch;
+  while ((ch = getchar()) != '\n' && ch != EOF);
+  getchar();
   return;
 }
