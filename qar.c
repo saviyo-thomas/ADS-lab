@@ -2,12 +2,14 @@
 #include<stdbool.h>
 #define size 3
 
+
 int a[size],b=-1,f=-1;
 
 void enq(int d);
 void dq();
 void count();
 void dis();
+
 
 bool isfull(){
   return b==size-1;

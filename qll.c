@@ -4,35 +4,41 @@
 #include<unistd.h>
 
 typedef struct node{
-  int id;
+  int data;
   struct node*next;
 }n;
+n* h=NULL;
+n* t=NULL;
 
 void clrscr(){
   printf("\e[1;1H\e[2J");
   return;
 }
 
+bool ismt(n** h){
+  return h==NULL;
+}
+
 n* createnode(int d){
   n* nn=(n*)malloc(sizeof(n));
-  nn->id=d;
+  nn->data=d;
   nn->next=NULL;
   return nn;
 }
 
-void append(n** h, int d){
+void nq(n** h, int d){
   n* nn=createnode(d);
-
+  if(*h==NULL){*h=nn; return;}
+  
+  return;
 }
 
 n* dq(n* h,int d){
-  if(h==NULL){printf("Empty queue");return NULL;}//if head is null-> no list exits, ->head gets the value of new node
+  if(h==NULL){printf("Empty queue");
   else{h=h->next; return h}
 }
 
 int main(){
-  n* hd=NULL;
-
   int c,d;
 
   while(true){
@@ -44,7 +50,7 @@ int main(){
     case 1:
       printf("\nEnter data:");
       scanf("%d",&d);
-      append(&hd,d);
+      nq(&hd,d);
       break;
     
     case 1:
