@@ -33,19 +33,20 @@ int main(){
 
 void enq(int d){
   if(isfull()){printf("\nQueue is full please wait till the queue is empty again"); return;}
-  else {
-    b++; a[b]=d;}
+  if(f==-1)f=0; //toset f to 0 at first
+  b++; a[b]=d;
 }
 
 void dq(){
   if(isempty()){printf("\nQueue is empty");return;}
   else {f++; printf("\n%d is dequeued",a[f]);}
+  if(f>b){f=-1; b=-1;} //when mpt reset f&b to -1
 }
 
 void count(){
-  int c;
-  c=(b-f);
-  printf("b:%df:%d",b,f);
+ if(isempty()){printf("\nQueue is empty");return;}
+ int c;
+  c=(b-f+1);
   printf("\nNumber of elements in queue: %d",c);
 }
 
