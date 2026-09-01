@@ -15,8 +15,9 @@ void clrscr(){
   return;
 }
 
-bool ismt(n** h){
-  return h==NULL;
+bool ismt(){
+  if(h==NULL){return true;}
+  else return false;
 }
 
 n* createnode(int d){
@@ -26,16 +27,18 @@ n* createnode(int d){
   return nn;
 }
 
-void nq(n** h, int d){
+void nq(int d){
   n* nn=createnode(d);
-  if(*h==NULL){*h=nn; return;}
-  
+  if(h==NULL){h=nn; t=nn;}
+  else{t->next=nn; t=nn;}
   return;
 }
 
-n* dq(n* h,int d){
-  if(h==NULL){printf("Empty queue");
-  else{h=h->next; return h}
+void dq(){
+  if(ismt()){printf("\nQueue is empty"); return;}
+  printf("%d is dequeued",h->data);
+  h=h->next;
+  if (h==NULL){t=NULL;}
 }
 
 int main(){
@@ -50,20 +53,18 @@ int main(){
     case 1:
       printf("\nEnter data:");
       scanf("%d",&d);
-      nq(&hd,d);
+      nq(d);
       break;
-    
-    case 1:
-      
-    case 4:
-      printf("\nEnter data:");
-      scanf("%d",&d);
-      ins(&hd,d);
+    case 2: 
+      dq();
+      printf("\nPress Enter to continue");
+      getchar(); getchar();
+      usleep(500000);
       break;
-    case 5:
-      return 0;
+    case 3: return 0;
     default:
       printf("\nEnter a valid input...");
+      usleep(500000);
   }}
   return 0;
 }

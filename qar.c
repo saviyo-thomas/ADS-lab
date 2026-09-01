@@ -35,7 +35,7 @@ int main(){
 
 void enq(int d){
   if(isfull()){printf("\nQueue is full please wait till the queue is empty again"); return;}
-  if(f==-1)f=0; //toset f to 0 at first
+  if(f==-1)f=0; //to set f to 0 at first
   b++; a[b]=d;
 }
 
