@@ -1,11 +1,11 @@
 #include<stdio.h>
-#define max_rows 50
-#define max_columns 50
-#define max_trunk_len 250
+#define mx_rs 50
+#define mx_cls 50
+#define mx_tlen 250
 
 
 int main(){
-  int r,c,size1,size2=0,a[max_rows][max_columns], b[3][max_trunk_len],count;
+  int r,c,size1,size2=0,a[mx_rs][mx_cls], b[3][mx_tlen],count;
 
     printf("\nEnter Matrix details\nRows: ");
     scanf("%d",&r);
