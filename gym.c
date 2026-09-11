@@ -68,7 +68,7 @@ void dash(){
   if(mcount==0){printf("\nNo members added");}
   int dlim=(mcount<5)?mcount:5;
   for (int j=0; j<dlim; j++){
-    printf("\n=%d=\t=%s=\t=%.2f=\t=%d==\n",srt[j].id,srt[j].name,srt[j].wt,srt[j].date);
+    printf("\n=%d=\t=%s=\t=%.2f=\t=%d==\n",m[j].id,m[j].name,m[j].wt,m[j].date);
 }}
 
 int main(){
