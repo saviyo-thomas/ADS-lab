@@ -74,7 +74,7 @@ void search(n* h, int d){
   }
   else{
     printf("\nData found at node with value: %d",h->data);
-    return h;
+    return ;
   }
 }
 
