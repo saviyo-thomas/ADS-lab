@@ -70,13 +70,27 @@ void search(n* h, int d) {
   }
 }
 
-void display(n* h) {
+void display(n* h, int space) {
+  // Base case
   if (h == NULL) {
     return;
   }
-  display(h->lc);
-  printf("%d ", h->data);
-  display(h->rc);
+  
+  // Increase distance between levels (5 spaces per level)
+  space += 5;
+  
+  // 1. Process right child first (prints at the top of the terminal)
+  display(h->rc, space);
+  
+  // 2. Print current node after printing spaces
+  printf("\n");
+  for (int i = 5; i < space; i++) {
+    printf(" ");
+  }
+  printf("%d\n", h->data);
+  
+  // 3. Process left child (prints at the bottom of the terminal)
+  display(h->lc, space);
 }
 
 int main() {
