@@ -7,7 +7,68 @@ typedef struct node{
 }n;
 
 n* ins (n* h, int d){
- 
+  if(h==NULL){
+    n* nn=(n*)malloc(sizeof(n));
+    nn->data=d;
+    nn->lc=NULL;
+    nn->rc=NULL;
+    return nn;
+  }
+  if(d<h->data){
+    h->lc=ins(h->lc,d);
+  }
+  else if(d>h->data){
+    h->rc=ins(h->rc,d);
+  }
+  return h;
+}
+
+void del(n* h, int d){
+  if(h==NULL){
+    printf("\nData not found");
+    return;
+  }
+  if(d<h->data){
+    del(h->lc,d);
+  }
+  else if(d>h->data){
+    del(h->rc,d);
+  }
+  else{
+    // Node to be deleted found
+    if(h->lc==NULL && h->rc==NULL){
+      free(h);
+      h=NULL;
+    }
+    else if(h->lc==NULL){
+      n* temp=h;
+      h=h->rc;
+      free(temp);
+    }
+    else if(h->rc==NULL){
+      n* temp=h;
+      h=h->lc;
+      free(temp);
+    }
+    else{
+      // Node with two children
+      n* temp=h->rc;
+      while(temp->lc!=NULL){
+        temp=temp->lc;
+      }
+      h->data=temp->data;
+      del(h->rc,temp->data);
+    }
+  }
+}
+
+void display(n* h){
+  if(h==NULL){
+    return;
+  }
+  display(h->lc);
+  printf("%d ",h->data);
+  display(h->rc);
 }
 
 int main(){
@@ -24,8 +85,19 @@ int main(){
                break;
              }
       case 2:{
-
-             }
+        printf("\nEnter data to be deleted :");
+        scanf("%d",&data);
+        del(hd,data);
+        break;
+      }
+      case 3:{
+        printf("\nThe tree is :");
+        display(hd);         
+        break;
+      }
+      case 4:{
+        exit(0);
+      }
     }
   }
   return 0;
