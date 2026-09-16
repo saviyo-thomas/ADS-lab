@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 typedef struct node{
   struct node* lc;
@@ -80,6 +81,7 @@ void search(n* h, int d){
 
 void display(n* h){
   if(h==NULL){
+    printf(" End");
     return;
   }
   display(h->lc);
@@ -94,33 +96,22 @@ int main(){
     printf("\n========Tree=======\n1.insert\n2.Delete\n3.Search\n4.display\n5.Exit");
     scanf("%d",&ch);
     switch(ch){
-      case 1:{
-               printf("\nEnter data :");
-               scanf("%d",&data);             
-               ins(hd,data);
-               break;
-             }
-      case 2:{
-        printf("\nEnter data to be deleted :");
-        scanf("%d",&data);
-        del(hd,data);
-        break;
-      }
-      case 3:{
-        printf("\nEnter data to search :");
-        scanf("%d",&data);
-        search(hd,data);
-        break;
-      }
-      case 4:{
-        printf("\nThe tree is :");
-        display(hd);
-        break;
-      }
-      case 5:{  
-        exit(0);
-      }
-    }
-  }
+      case 1:{ printf("\nEnter data :");
+               scanf("%d",&data);
+               ins(hd,data); break;}
+      case 2:{ printf("\nEnter data to be deleted :");
+               scanf("%d",&data);
+               del(hd,data);
+               break;}
+      case 3:{ printf("\nEnter data to search :");
+               scanf("%d",&data);
+               search(hd,data);
+               break;}
+      case 4:{ printf("\nThe tree is :");
+               display(hd);
+               break;}
+      case 5:{return 0;}
+      default :printf("Invalid input");
+  }}
   return 0;
 }
