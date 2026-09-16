@@ -61,6 +61,22 @@ void del(n* h, int d){
     }
   }
 }
+void search(n* h, int d){
+  if(h==NULL){  
+    printf("\nData not found");
+    return;
+  }
+  if(d<h->data){
+    return search(h->lc,d);
+  }
+  else if(d>h->data){
+    return search(h->rc,d);
+  }
+  else{
+    printf("\nData found at node with value: %d",h->data);
+    return h;
+  }
+}
 
 void display(n* h){
   if(h==NULL){
@@ -75,7 +91,7 @@ int main(){
   n* hd=NULL;
   int ch,data;
   while(1){
-    printf("\n========Tree=======\n1.insert\n2.Delete\n3.display\n4.Exit");
+    printf("\n========Tree=======\n1.insert\n2.Delete\n3.Search\n4.display\n5.Exit");
     scanf("%d",&ch);
     switch(ch){
       case 1:{
@@ -91,11 +107,17 @@ int main(){
         break;
       }
       case 3:{
-        printf("\nThe tree is :");
-        display(hd);         
+        printf("\nEnter data to search :");
+        scanf("%d",&data);
+        search(hd,data);
         break;
       }
       case 4:{
+        printf("\nThe tree is :");
+        display(hd);
+        break;
+      }
+      case 5:{  
         exit(0);
       }
     }
