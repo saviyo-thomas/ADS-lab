@@ -2,9 +2,9 @@
 #include<stdlib.h>
 
 typedef struct Node{
-  n* l;
+  struct Node* l;
   int d;
-  n* r;
+  struct Node* r;
 }n;
 
 n* h=NULL;
@@ -39,4 +39,4 @@ int main(){
               scanf("%d",&key);
               ser(h,key);break;}
     default: printf("\n Enter a valid input");
-}
+}return 0;}
