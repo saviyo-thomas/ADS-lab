@@ -13,7 +13,8 @@ void insertAtBeginning(int val) {
     newNode->data = val;
     newNode->next = head;
     head = newNode;
-    printf("\nInserted %d at the beginning.", val);
+    printf("
+Inserted %d at the beginning.", val);
 }
 
 void insertAtEnd(int val) {
@@ -22,7 +23,8 @@ void insertAtEnd(int val) {
     newNode->next = NULL;
     if (head == NULL) {
         head = newNode;
-        printf("\nInserted %d as the first element.", val);
+        printf("
+Inserted %d as the first element.", val);
         return;
     }
     struct Node* temp = head;
@@ -30,19 +32,50 @@ void insertAtEnd(int val) {
         temp = temp->next;
     }
     temp->next = newNode;
-    printf("\nInserted %d at the end.", val);
+    printf("
+Inserted %d at the end.", val);
+}
+
+void insertAtPosition(int val, int pos) {
+    if (pos < 1) {
+        printf("
+Invalid position!");
+        return;
+    }
+    if (pos == 1) {
+        insertAtBeginning(val);
+        return;
+    }
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = val;
+    struct Node* temp = head;
+    for (int i = 1; temp != NULL && i < pos - 1; i++) {
+        temp = temp->next;
+    }
+    if (temp == NULL) {
+        printf("
+Position out of bounds!");
+        free(newNode);
+        return;
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+    printf("
+Inserted %d at position %d.", val, pos);
 }
 
 void deleteNode(int val) {
     if (head == NULL) {
-        printf("\nList is empty.");
+        printf("
+List is empty.");
         return;
     }
     struct Node *temp = head, *prev = NULL;
     if (temp != NULL && temp->data == val) {
         head = temp->next;
         free(temp);
-        printf("\nDeleted %d from the list.", val);
+        printf("
+Deleted %d from the list.", val);
         return;
     }
     while (temp != NULL && temp->data != val) {
@@ -50,60 +83,89 @@ void deleteNode(int val) {
         temp = temp->next;
     }
     if (temp == NULL) {
-        printf("\nElement %d not found in the list.", val);
+        printf("
+Element %d not found in the list.", val);
         return;
     }
     prev->next = temp->next;
     free(temp);
-    printf("\nDeleted %d from the list.", val);
+    printf("
+Deleted %d from the list.", val);
 }
 
 void display() {
     if (head == NULL) {
-        printf("\nList is empty.");
+        printf("
+List is empty.");
         return;
     }
     struct Node* temp = head;
-    printf("\nLinked List: ");
+    printf("
+Linked List: ");
     while (temp != NULL) {
         printf("%d -> ", temp->data);
         temp = temp->next;
     }
-    printf("NULL\n");
+    printf("NULL
+");
 }
 
 int main() {
-    int choice, val;
+    int choice, val, pos;
     while (1) {
-        printf("\n\n--- Linked List Operations Menu ---");
-        printf("\n1. Insert at Beginning");
-        printf("\n2. Insert at End");
-        printf("\n3. Delete a Node");
-        printf("\n4. Display");
-        printf("\n5. Exit");
-        printf("\nEnter your choice: ");
+        printf("
+
+--- Linked List Operations Menu ---");
+        printf("
+1. Insert at Beginning");
+        printf("
+2. Insert at End");
+        printf("
+3. Insert In Between (at Position)");
+        printf("
+4. Delete a Node");
+        printf("
+5. Display");
+        printf("
+6. Exit");
+        printf("
+Enter your choice: ");
         if (scanf("%d", &choice) != 1) return 0;
 
         switch (choice) {
             case 1:
-                printf("\nEnter value to insert at beginning: ");
+                printf("
+Enter value to insert at beginning: ");
                 if (scanf("%d", &val) == 1) insertAtBeginning(val);
                 break;
             case 2:
-                printf("\nEnter value to insert at end: ");
+                printf("
+Enter value to insert at end: ");
                 if (scanf("%d", &val) == 1) insertAtEnd(val);
                 break;
             case 3:
-                printf("\nEnter value to delete: ");
-                if (scanf("%d", &val) == 1) deleteNode(val);
+                printf("
+Enter value to insert: ");
+                if (scanf("%d", &val) == 1) {
+                    printf("Enter 1-based position (e.g. 2 to insert after head): ");
+                    if (scanf("%d", &pos) == 1) {
+                        insertAtPosition(val, pos);
+                    }
+                }
                 break;
             case 4:
-                display();
+                printf("
+Enter value to delete: ");
+                if (scanf("%d", &val) == 1) deleteNode(val);
                 break;
             case 5:
+                display();
+                break;
+            case 6:
                 exit(0);
             default:
-                printf("\nInvalid choice. Please try again.");
+                printf("
+Invalid choice. Please try again.");
         }
     }
     return 0;
