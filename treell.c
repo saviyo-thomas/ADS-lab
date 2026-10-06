@@ -45,25 +45,6 @@ void search(n* h, int d) {
   else if (d > h->data) { search(h->rc, d); }
   else { printf("\nData found at node with value: %d", h->data); }
 }
-/*
-void display(n* h, int space) {
-  
-  if (h == NULL) { return; }
-  
-  space += 3;
-  
-  // 1. Process right child first (prints at the top of the terminal)
-  display(h->rc, space);
-  
-  // 2. Print current node after printing spaces
-  printf("\n");
-  for (int i = 3; i < space; i++) { printf(" "); }
-  printf("%d\n", h->data);
-  
-  // 3. Process left child (prints at the bottom of the terminal)
-  display(h->lc, space);
-}
-*/
 
 void inord(n*h){
   if (h==NULL){return;}
