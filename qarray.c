@@ -10,14 +10,10 @@ void dq();
 void count();
 void dis();
 
-bool isempty(){
-  return f==size-1;
-}
+bool isfull(){ return b==size-1;}
 
-bool isfull(){
-  return b==size-1;
-}
 bool isempty(){ return f==-1;}
+
 int main(){
   int ch,d;
   while(1){
