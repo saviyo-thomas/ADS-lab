@@ -13,8 +13,7 @@ void insertAtBeginning(int val) {
     newNode->data = val;
     newNode->next = head;
     head = newNode;
-    printf("
-Inserted %d at the beginning.", val);
+    printf("Inserted %d at the beginning.", val);
 }
 
 void insertAtEnd(int val) {
