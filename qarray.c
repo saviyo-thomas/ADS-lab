@@ -10,6 +10,9 @@ void dq();
 void count();
 void dis();
 
+bool isempty(){
+  return f==size-1;
+}
 
 bool isfull(){
   return b==size-1;
