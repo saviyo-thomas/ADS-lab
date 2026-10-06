@@ -1,121 +1,110 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
-#include<unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct node{
-  int id;
-  struct node*next;
-}n;
+struct Node {
+    int data;
+    struct Node* next;
+};
 
-void clrscr(){
-  printf("\e[1;1H\e[2J");
-  return;
+struct Node* head = NULL;
+
+void insertAtBeginning(int val) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = val;
+    newNode->next = head;
+    head = newNode;
+    printf("\nInserted %d at the beginning.", val);
 }
 
-n* createnode(int d){
-  n* nn=(n*)malloc(sizeof(n));
-  nn->id=d;
-  nn->next=NULL;
-  return nn;
-}
-
-void append(n** h, int d){
-  n* nn=createnode(d);
-  if(*h==NULL){*h=nn; return;}
-  n* l=*h;
-  while(l->next!=NULL){l=l->next;}
-  l->next=nn;
-  return;
-}
-
-void insb(n** h,int d){
-  n* nn=createnode(d);
-  if(*h==NULL){*h=nn; return;}//if head is null-> no list exits, ->head gets the value of new node
-  else{nn->next=*h; *h=nn;}//list exists -> new node's next gets the value in head ie:1st node's address
-  return;
-}
-
-void trall(n* h){
-  n*t=h;
-  printf("\nLInked list\n");
-  while(t!=NULL){
-    printf("%d->",t->id);
-    t=t->next;
-  }
-  printf("NULL\n");
-}
-
-n* search(n* h, int k){
-  n* t=h;
-  while(t!=NULL){
-    if(t->id==k){return t;}
-    t=t->next;
-  }
-  return NULL;
-}
-
-void ins(n** h, int d){
-  n* nn=createnode(d);
-  if(*h==NULL){*h=nn; return;}
-  else{
-    int pos;
-    n* z;
-    while(true){
-      trall(*h);
-      printf("\nEnter preceding record:");
-      scanf("%d",&pos);
-      z=search(*h,pos);
-      if(z==NULL){
-        printf("Enter a valid input\npress any key to continue.");
-        getchar();
-        continue;}
-      else{
-        nn->next=z->next;
-        z->next=nn;
-      }
+void insertAtEnd(int val) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = val;
+    newNode->next = NULL;
+    if (head == NULL) {
+        head = newNode;
+        printf("\nInserted %d as the first element.", val);
+        return;
     }
-  }
-  return;
+    struct Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    printf("\nInserted %d at the end.", val);
 }
 
-int main(){
-  n* hd=NULL;
+void deleteNode(int val) {
+    if (head == NULL) {
+        printf("\nList is empty.");
+        return;
+    }
+    struct Node *temp = head, *prev = NULL;
+    if (temp != NULL && temp->data == val) {
+        head = temp->next;
+        free(temp);
+        printf("\nDeleted %d from the list.", val);
+        return;
+    }
+    while (temp != NULL && temp->data != val) {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL) {
+        printf("\nElement %d not found in the list.", val);
+        return;
+    }
+    prev->next = temp->next;
+    free(temp);
+    printf("\nDeleted %d from the list.", val);
+}
 
-  int c,d;
+void display() {
+    if (head == NULL) {
+        printf("\nList is empty.");
+        return;
+    }
+    struct Node* temp = head;
+    printf("\nLinked List: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
 
-  while(true){
-  clrscr();
-  printf("\n1.Insert node at start\n2.Print list\n3.Insert node at End\n4.Insert node in between\n5.exit\n\nEnter your choice:");
-  scanf("%d",&c);
- 
-  switch(c){
-    case 1:
-      printf("\nEnter data:");
-      scanf("%d",&d);
-      insb(&hd,d);
-      break;
-    case 2:
-      clrscr();
-      trall(hd);
-      
-      printf("Press any key to continue");
-      sleep(3);
-      break;
-    case 3:
-      printf("Enter data:");
-      scanf("%d",&d);
-      append(&hd,d);
-      break;
-    case 4:
-      printf("\nEnter data:");
-      scanf("%d",&d);
-      ins(&hd,d);
-      break;
-    case 5:
-      return 0;
-    default:
-      printf("\nEnter a valid input...");
-  }}
-  return 0;
+int main() {
+    int choice, val;
+    while (1) {
+        printf("\n\n--- Linked List Operations Menu ---");
+        printf("\n1. Insert at Beginning");
+        printf("\n2. Insert at End");
+        printf("\n3. Delete a Node");
+        printf("\n4. Display");
+        printf("\n5. Exit");
+        printf("\nEnter your choice: ");
+        if (scanf("%d", &choice) != 1) return 0;
+
+        switch (choice) {
+            case 1:
+                printf("\nEnter value to insert at beginning: ");
+                if (scanf("%d", &val) == 1) insertAtBeginning(val);
+                break;
+            case 2:
+                printf("\nEnter value to insert at end: ");
+                if (scanf("%d", &val) == 1) insertAtEnd(val);
+                break;
+            case 3:
+                printf("\nEnter value to delete: ");
+                if (scanf("%d", &val) == 1) deleteNode(val);
+                break;
+            case 4:
+                display();
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("\nInvalid choice. Please try again.");
+        }
+    }
+    return 0;
 }
