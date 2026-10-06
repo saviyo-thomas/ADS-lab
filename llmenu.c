@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node {
+typedef struct Node {
     int data;
     struct Node* next;
-};
+}n;
 
-struct Node* head = NULL;
+n* head = NULL;
 
 void insertAtBeginning(int val) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    n* newNode = (n*)malloc(sizeof(n));
     newNode->data = val;
     newNode->next = head;
     head = newNode;
@@ -17,7 +17,7 @@ void insertAtBeginning(int val) {
 }
 
 void insertAtEnd(int val) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    n* newNode = (n*)malloc(sizeof(n));
     newNode->data = val;
     newNode->next = NULL;
     if (head == NULL) {
@@ -25,7 +25,7 @@ void insertAtEnd(int val) {
         printf("\nInserted %d as the first element.", val);
         return;
     }
-    struct Node* temp = head;
+    n* temp = head;
     while (temp->next != NULL) {
         temp = temp->next;
     }
@@ -38,7 +38,7 @@ void deleteNode(int val) {
         printf("\nList is empty.");
         return;
     }
-    struct Node *temp = head, *prev = NULL;
+    n *temp = head, *prev = NULL;
     if (temp != NULL && temp->data == val) {
         head = temp->next;
         free(temp);
@@ -63,7 +63,7 @@ void display() {
         printf("\nList is empty.");
         return;
     }
-    struct Node* temp = head;
+    n* temp = head;
     printf("\nLinked List: ");
     while (temp != NULL) {
         printf("%d -> ", temp->data);

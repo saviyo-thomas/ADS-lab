@@ -7,11 +7,6 @@ typedef struct node{
 	struct node* next;
 }n;
 
-void clrscr(){
-  printf("\e[1;1H\e[2J");
-  return;
-}
-
 n* createnode(int d){
   n* nn=(n*)malloc(sizeof(n));
   nn->d=d;
@@ -28,7 +23,6 @@ int main(){
 
   int c;
   while(1){
-    clrscr();
     printf("\n1.Push\n2.Pop\n3.Peek\n4.Exit\nEnter choice :");
     scanf("%d",&c);
 
@@ -53,26 +47,16 @@ void push (n** h){
 }
 
 void pop (n** h){
-  if(*h==NULL){printf("!!Stack Underflow!!");}
+  if(*h==NULL){printf("!!Stack Underflow!!"); return;} 
   else{printf("%d popped",(*h)->d);}
   n* t=*h;
   *h=(*h)->next;
   free(t);
-  wait();
   return;
 }
 
 void peek(n** h){
-  if(*h==NULL){printf("!!Stack Underflow!!");}
+  if(*h==NULL){printf("!!Stack Underflow!!"); return;}
   else{printf("%d is at the top",(*h)->d);}
-  wait();
-  return;
-}
-
-void wait(){
-  printf("\nPress Enter to continue");
-  int ch;
-  while ((ch = getchar()) != '\n' && ch != EOF);
-  getchar();
   return;
 }
