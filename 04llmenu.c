@@ -2,14 +2,12 @@
 #include <stdlib.h>
 
 typedef struct Node {
-  int data;
-  struct Node* next;
-  struct Node* prev;
+    int data;
+    struct Node* next;
 }n;
- 
 
 n* head = NULL;
-n* crnod (int val){n* nn = (n*)malloc(sizeof(n)); nn->data=val; nn->next=NULL; nn->prev=NULL; }
+n* crnod (int val){n* nn = (n*)malloc(sizeof(n)); nn->data=val; nn->next=NULL; }
 
 void insbeg(int val) {
   n* nn=crnod(val);
@@ -27,7 +25,6 @@ void append(int val) {
   n* temp = head;
   while (temp->next != NULL) {temp = temp->next;}
   temp->next = nn;
-  nn->prev = temp;
   printf("Inserted %d at the end.", val);
 }
 
@@ -38,8 +35,7 @@ void insatpos(int val, int pos) {
     temp=temp->next;
     if(temp->data == pos){
       nn->next=temp->next;
-      temp->next = nn;
-      nn->prev = temp;
+      temp->next= nn;
       printf("Inserted %d after %d.", val, pos);}
     return;
   }
