@@ -24,16 +24,14 @@ void insbeg(int val) {
     head->prev = nn;
   }
   head = nn;
-  printf("Inserted %d at the beginning.
-", val);
+  printf("\nInserted %d at the beginning.", val);
 }
 
 void append(int val) {
   n* nn=crnod(val);
   if (head == NULL) {
     head = nn;
-    printf("Inserted %d as the first element.
-", val);
+    printf("\nInserted %d as the first element.", val);
     return;
   }
   n* temp = head;
@@ -42,8 +40,7 @@ void append(int val) {
   }
   temp->next = nn;
   nn->prev = temp;
-  printf("Inserted %d at the end.
-", val);
+  printf("\nInserted %d at the end.", val);
 }
 
 void insatpos(int val, int pos) {
@@ -57,21 +54,18 @@ void insatpos(int val, int pos) {
       }
       temp->next = nn;
       nn->prev = temp;
-      printf("Inserted %d after %d.
-", val, pos);
+      printf("\nInserted %d after %d.", val, pos);
       return;
     }
     temp=temp->next;
   }
-  printf("Value %d not found in list.
-", pos);
+  printf("\nValue %d not found in list.", pos);
   free(nn);
 }
 
 void delNode(int val) {
     if (head == NULL) {
-        printf("List is empty.
-");
+        printf("\nList is empty.");
         return;
     }
     n *temp = head;
@@ -79,8 +73,7 @@ void delNode(int val) {
         temp = temp->next;
     }
     if (temp == NULL) {
-        printf("Element %d not found in the list.
-", val);
+        printf("\nElement %d not found in the list.", val);
         return;
     }
     if (temp == head) {
@@ -97,38 +90,27 @@ void delNode(int val) {
         }
     }
     free(temp);
-    printf("Deleted %d from the list.
-", val);
+    printf("\nDeleted %d from the list.", val);
 }
 
 void display() {
     if (head == NULL) {
-        printf("List is empty.
-");
+        printf("\nList is empty.");
         return;
     }
     n* temp = head;
-    printf("Linked List: ");
+    printf("\nLinked List: ");
     while (temp != NULL) {
         printf("%d -> ", temp->data);
         temp = temp->next;
     }
-    printf("NULL
-");
+    printf("NULL\n");
 }
 
 int main() {
   int choice, val, pos;
   while (1) {
-    printf("
---- Linked List Operations Menu ---
-1. Insert at Beginning
-2. Insert at End
-3. Insert In Between (at Position)
-4. Delete a Node
-5. Display
-6. Exit
-Enter your choice: ");
+    printf("\n--- Linked List Operations Menu ---\n1. Insert at Beginning\n2. Insert at End\n3. Insert In Between (at Position)\n4. Delete a Node\n5. Display\n6. Exit\nEnter your choice: ");
     if (scanf("%d", &choice) != 1) return 0;
     switch (choice) {
       case 1:
@@ -143,8 +125,7 @@ Enter your choice: ");
         printf("Enter value to insert: ");
         if (scanf("%d", &val) == 1) {
           display();
-          printf("
-Enter preceding record: ");
+          printf("Enter preceding record: ");
           if (scanf("%d", &pos) == 1) { insatpos(val, pos); }
         }
         break;
@@ -158,8 +139,7 @@ Enter preceding record: ");
       case 6:
         exit(0);
       default:
-        printf("Invalid choice. Please try again.
-");
+        printf("Invalid choice. Please try again.");
     }
   }
   return 0;
