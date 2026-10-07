@@ -22,8 +22,7 @@ void insertAtEnd(int val) {
     newNode->next = NULL;
     if (head == NULL) {
         head = newNode;
-        printf("
-Inserted %d as the first element.", val);
+        printf("Inserted %d as the first element.", val);
         return;
     }
     n* temp = head;
@@ -31,20 +30,12 @@ Inserted %d as the first element.", val);
         temp = temp->next;
     }
     temp->next = newNode;
-    printf("
-Inserted %d at the end.", val);
+    printf("Inserted %d at the end.", val);
 }
 
 void insertAtPosition(int val, int pos) {
-    if (pos < 1) {
-        printf("
-Invalid position!");
-        return;
-    }
-    if (pos == 1) {
-        insertAtBeginning(val);
-        return;
-    }
+    if (pos < 1) { printf("Invalid position!"); return; }
+    if (pos == 1) { insertAtBeginning(val); return;}
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = val;
     struct Node* temp = head;
@@ -52,29 +43,20 @@ Invalid position!");
         temp = temp->next;
     }
     if (temp == NULL) {
-        printf("
-Position out of bounds!");
-        free(newNode);
-        return;
+        printf("Position out of bounds!"); free(newNode); return;
     }
     newNode->next = temp->next;
     temp->next = newNode;
-    printf("
-Inserted %d at position %d.", val, pos);
-}
+    printf("Inserted %d at position %d.", val, pos);}
 
 void deleteNode(int val) {
     if (head == NULL) {
-        printf("
-List is empty.");
-        return;
-    }
+        printf("List is empty."); return; }
     n *temp = head, *prev = NULL;
     if (temp != NULL && temp->data == val) {
         head = temp->next;
         free(temp);
-        printf("
-Deleted %d from the list.", val);
+        printf("Deleted %d from the list.", val);
         return;
     }
     while (temp != NULL && temp->data != val) {
@@ -82,74 +64,44 @@ Deleted %d from the list.", val);
         temp = temp->next;
     }
     if (temp == NULL) {
-        printf("
-Element %d not found in the list.", val);
-        return;
-    }
+        printf("Element %d not found in the list.", val); return; }
     prev->next = temp->next;
     free(temp);
-    printf("
-Deleted %d from the list.", val);
+    printf("Deleted %d from the list.", val);
 }
 
 void display() {
     if (head == NULL) {
-        printf("
-List is empty.");
+       printf("List is empty.");
         return;
     }
-<<<<<<< HEAD
     struct Node* temp = head;
-    printf("
-Linked List: ");
-=======
-    n* temp = head;
+    printf("Linked List: ");
     printf("\nLinked List: ");
->>>>>>> 69dd813b8c3f89473f78c30710003c6a5bb48064
     while (temp != NULL) {
         printf("%d -> ", temp->data);
         temp = temp->next;
     }
-    printf("NULL
-");
+    printf("NULL");
 }
 
 int main() {
     int choice, val, pos;
     while (1) {
-        printf("
-
---- Linked List Operations Menu ---");
-        printf("
-1. Insert at Beginning");
-        printf("
-2. Insert at End");
-        printf("
-3. Insert In Between (at Position)");
-        printf("
-4. Delete a Node");
-        printf("
-5. Display");
-        printf("
-6. Exit");
-        printf("
-Enter your choice: ");
+        printf("\n--- Linked List Operations Menu ---\n1. Insert at Beginning\n2. Insert at End\n3. Insert In Between (at Position\n4. Delete a Node\n5. Display\n6. Exit\nEnter your choice: ");
         if (scanf("%d", &choice) != 1) return 0;
 
         switch (choice) {
             case 1:
-                printf("
-Enter value to insert at beginning: ");
+                printf("Enter value to insert at beginning: ");
                 if (scanf("%d", &val) == 1) insertAtBeginning(val);
                 break;
             case 2:
-                printf("
-Enter value to insert at end: ");
+                printf("Enter value to insert at end: ");
                 if (scanf("%d", &val) == 1) insertAtEnd(val);
                 break;
             case 3:
-                printf("
-Enter value to insert: ");
+                printf("Enter value to insert: ");
                 if (scanf("%d", &val) == 1) {
                     printf("Enter 1-based position (e.g. 2 to insert after head): ");
                     if (scanf("%d", &pos) == 1) {
@@ -158,8 +110,7 @@ Enter value to insert: ");
                 }
                 break;
             case 4:
-                printf("
-Enter value to delete: ");
+                printf("Enter value to delete: ");
                 if (scanf("%d", &val) == 1) deleteNode(val);
                 break;
             case 5:
@@ -168,8 +119,7 @@ Enter value to delete: ");
             case 6:
                 exit(0);
             default:
-                printf("
-Invalid choice. Please try again.");
+                printf("Invalid choice. Please try again.");
         }
     }
     return 0;
