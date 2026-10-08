@@ -1,20 +1,31 @@
-#include<stdio.h>
-#include<stdbool.h>
-#define size 3
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
-int a[size], b = -1, f = -1;
+#define size 5
+
+typedef struct node {
+    int data;
+    struct node* next;
+} node;
+
+node* front = NULL;
+node* rear = NULL;
+int current_size = 0;
 
 void enq(int d);
 void dq();
 void count();
 void dis();
+bool isfull();
+bool isempty();
 
 bool isfull() {
-    return (b + 1) % size == f;
+    return current_size == size;
 }
 
 bool isempty() {
-    return f == -1;
+    return current_size == 0;
 }
 
 int main() {
@@ -27,44 +38,74 @@ int main() {
                 printf("Data :");
                 if (scanf("%d", &d) == 1) { enq(d); }
                 break;
-                    }
+            }
             case 2: dq(); break;
             case 3: dis(); break;
             case 4: count(); break;
             case 5: return 0;
-            default: printf("Enter valid input");
-    }}
+            default: printf("Enter valid input\n");
+        }
+    }
     return 0;
 }
 
 void enq(int d) {
-    if (isfull()) {printf("Queue is full"); return; }
-    if (f == -1) {f = 0; }
-    b = (b + 1) % size;
-    a[b] = d;
+    if (isfull()) { 
+        printf("Queue is full\n"); 
+        return; 
+    }
+    
+    node* newNode = (node*)malloc(sizeof(node));
+    newNode->data = d;
+    newNode->next = NULL;
+
+    if (isempty()) {
+        front = newNode;
+        rear = newNode;
+        rear->next = front;
+    } else {
+        rear->next = newNode;
+        rear = newNode;
+        rear->next = front;
+    }
+    current_size++;
 }
 
 void dq() {
-    if (isempty()) {printf("Queue is empty"); return; }
-    printf("%d is dequeued", a[f]);
-    if (f == b) { f = -1; b = -1;   } else { f = (f + 1) % size;}
+    if (isempty()) { 
+        printf("Queue is empty\n"); 
+        return; 
+    }
+    
+    printf("%d is dequeued\n", front->data);
+    node* temp = front;
+    
+    if (front == rear) {
+        front = NULL;
+        rear = NULL;
+    } else {
+        front = front->next;
+        rear->next = front; 
+    }
+    
+    free(temp);
+    current_size--;
 }
 
 void count() {
-    if (isempty()) { printf("Queue is empty"); return; }
-    int c;
-    if (b >= f) { c = b - f + 1; }
-    else { c = size - f + b + 1; }
-    printf("Number of elements in queue: %d", c);
+    printf("Number of elements in queue: %d\n", current_size);
 }
 
 void dis() {
-    if (isempty()) { printf("Queue is empty"); return;}
-    int i = f;
-    while (1) {
-        printf("[%d] ", a[i]);
-        if (i == b) break;
-        i = (i + 1) % size;
+    if (isempty()) { 
+        printf("Queue is empty\n"); 
+        return; 
+    }
+    
+    node* temp = front;
+    for (int i = 0; i < current_size; i++) {
+        printf("[%d] ", temp->data);
+        temp = temp->next;
     }
     printf("\n");
 }
