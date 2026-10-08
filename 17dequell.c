@@ -1,19 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Node for doubly linked list
+
 struct Node {
     int data;
     struct Node *prev, *next;
 };
 
-// Deque structure
 struct myDeque {
     struct Node *front, *rear;
     int size;
 };
 
-// Create a new deque
 struct myDeque* createMyDeque() {
     struct myDeque* dq = (struct myDeque*)malloc(sizeof(struct myDeque));
     dq->front = dq->rear = NULL;
@@ -21,13 +19,12 @@ struct myDeque* createMyDeque() {
     return dq;
 }
 
-// Check if deque is empty
 int isEmpty(struct myDeque* dq) { return dq->front == NULL; }
 
-// Get current size
+
 int getSize(struct myDeque* dq) { return dq->size; }
 
-// Insert at front
+
 void insertFront(struct myDeque* dq, int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -42,7 +39,7 @@ void insertFront(struct myDeque* dq, int data) {
     dq->size++;
 }
 
-// Insert at rear
+
 void insertRear(struct myDeque* dq, int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -59,7 +56,7 @@ void insertRear(struct myDeque* dq, int data) {
     dq->size++;
 }
 
-// Delete from front
+
 void deleteFront(struct myDeque* dq) {
     if (isEmpty(dq)) {
         printf("UnderFlow\n");
@@ -71,7 +68,7 @@ void deleteFront(struct myDeque* dq) {
     dq->size--;
 }
 
-// Delete from rear
+
 void deleteRear(struct myDeque* dq) {
     if (isEmpty(dq)) {
         printf("UnderFlow\n");
@@ -83,13 +80,12 @@ void deleteRear(struct myDeque* dq) {
     dq->size--;
 }
 
-// Get front element
+
 int getFront(struct myDeque* dq) { return isEmpty(dq) ? -1 : dq->front->data; }
 
-// Get rear element
+
 int getRear(struct myDeque* dq) { return isEmpty(dq) ? -1 : dq->rear->data; }
 
-// Clear deque
 void erase(struct myDeque* dq) {
     while (!isEmpty(dq)) deleteFront(dq);
 }
