@@ -1,26 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // To heapify a subtree rooted with node i
-void heapify(int arr[], int n, int i){
-
-    // Initialize largest as root
+void heapify(int arr[], int n, int i) {
     int largest = i;
-
-    // left index = 2*i + 1
     int l = 2 * i + 1;
-
-    // right index = 2*i + 2
     int r = 2 * i + 2;
 
-    // If left child is larger than root
     if (l < n && arr[l] > arr[largest])
         largest = l;
 
-    // If right child is larger than largest so far
     if (r < n && arr[r] > arr[largest])
         largest = r;
 
-    // If largest is not root
     if (largest != i) {
         int temp = arr[i];
         arr[i] = arr[largest];
@@ -32,15 +24,13 @@ void heapify(int arr[], int n, int i){
 }
 
 // Main function to do heap sort
-void heapSort(int arr[], int n){
-
-    // Build heap (rearrange vector)
+void heapSort(int arr[], int n) {
+    // Build heap
     for (int i = n / 2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 
     // One by one extract an element from heap
     for (int i = n - 1; i > 0; i--) {
-
         // Move current root to end
         int temp = arr[0];
         arr[0] = arr[i];
@@ -52,13 +42,36 @@ void heapSort(int arr[], int n){
 }
 
 int main() {
-    int arr[] = { 9, 4, 3, 8, 10, 2, 5 };
-    int n = sizeof(arr) / sizeof(arr[0]);
+    int n;
+
+    printf("Enter the number of elements: ");
+    if (scanf("%d", &n) != 1 || n <= 0) {
+        printf("Invalid size entered.\n");
+        return 1;
+    }
+
+    // Dynamically allocate memory based on user input size
+    int* arr = (int*)malloc(n * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", &arr[i]);
+    }
 
     heapSort(arr, n);
 
-    for (int i = 0; i < n; ++i)
+    printf("\nSorted array:\n");
+    for (int i = 0; i < n; ++i) {
         printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // Free allocated memory to prevent memory leaks
+    free(arr);
 
     return 0;
 }
