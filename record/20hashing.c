@@ -4,12 +4,12 @@
 
 #define TABLE_SIZE 10
 
-struct Node {
+typedef struct Node {
     int data;
     struct Node* next;
-};
+}n;
 
-struct Node* hashTable[TABLE_SIZE];
+n* hashTable[TABLE_SIZE];
 
 void initHash() {
     for (int i = 0; i < TABLE_SIZE; i++) {
@@ -17,26 +17,25 @@ void initHash() {
     }
 }
 
-int hashKey(int key) {
-    return key % TABLE_SIZE;
+int hashKey(long int key) {
+    return key % 10;
 }
 
-void insertHash(int key) {
+void insertHash(long int key) {
     int index = hashKey(key);
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = key;
-    newNode->next = NULL;
+    n* nn = (n*)malloc(sizeof(n));
+    nn->data = key;
+    nn->next = NULL;
 
-    if (hashTable[index] == NULL) {
-        hashTable[index] = newNode;
-    } else {
-        struct Node* temp = hashTable[index];
+    if (hashTable[index] == NULL) { hashTable[index] = nn;}
+    else {
+        n* temp = hashTable[index];
         while (temp->next != NULL) {
             temp = temp->next;
         }
-        temp->next = newNode;
+        temp->next = nn;
     }
-    printf("Inserted %d at index %d\n", key, index);
+    printf("Inserted %ld at index %d\n", key, index);
 }
 
 void displayHash() {
@@ -53,7 +52,8 @@ void displayHash() {
 
 int main() {
     initHash();
-    int choice, val;
+    int choice;
+    long int val;
 
     while (1) {
         printf("\n1. Insert\n2. Display\n3. Exit\nEnter choice: ");
@@ -62,7 +62,7 @@ int main() {
         switch (choice) {
             case 1:
                 printf("Enter value to insert: ");
-                scanf("%d", &val);
+                scanf("%ld", &val);
                 insertHash(val);
                 break;
             case 2:
