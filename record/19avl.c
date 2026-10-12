@@ -55,7 +55,7 @@ n* leftRotate(n* x) {
     return y;
 }
 
-int getBalance(n* node) {
+int htdiff(n* node) {
     if (node == NULL)
         return 0;
     return height(node->l) - height(node->r);
@@ -74,24 +74,24 @@ n* ins(n* node, int d) {
 
     node->height = 1 + maxVal(height(node->l), height(node->r));
 
-    int balance = getBalance(node);
+    int h_diff = htdiff(node);
 
     // Left Left Case
-    if (balance > 1 && d < node->l->d)
+    if (h_diff > 1 && d < node->l->d)
         return rightRotate(node);
 
     // Right Right Case
-    if (balance < -1 && d > node->r->d)
+    if (h_diff < -1 && d > node->r->d)
         return leftRotate(node);
 
     // Left Right Case
-    if (balance > 1 && d > node->l->d) {
+    if (h_diff > 1 && d > node->l->d) {
         node->l = leftRotate(node->l);
         return rightRotate(node);
     }
 
     // Right Left Case
-    if (balance < -1 && d < node->r->d) {
+    if (h_diff < -1 && d < node->r->d) {
         node->r = rightRotate(node->r);
         return leftRotate(node);
     }
@@ -99,7 +99,7 @@ n* ins(n* node, int d) {
     return node;
 }
 
-void ser(n* root, int k) {
+void search(n* root, int k) {
     if (root == NULL) {
         printf("\nKey is not found");
         return;
@@ -107,9 +107,9 @@ void ser(n* root, int k) {
     if (k == root->d) {
         printf("\nKey is found");
     } else if (k < root->d) {
-        ser(root->l, k);
+        search(root->l, k);
     } else {
-        ser(root->r, k);
+        search(root->r, k);
     }
 }
 
@@ -141,14 +141,7 @@ int main() {
     int ch, data, key;
     
     while(1) {
-        printf("\n\n==== AVL Tree Menu =====\n");
-        printf("1. Insertion (Auto-Balancing via Rotations)\n");
-        printf("2. Search\n");
-        printf("3. Inorder Traversal\n");
-        printf("4. Preorder Traversal\n");
-        printf("5. Postorder Traversal\n");
-        printf("6. Exit\n");
-        printf("Enter your choice: ");
+        printf("\n\n==== AVL Tree Menu =====\n1. Insertion (Auto-Balancing via Rotations)\n2. Search\n3. Traversal\n4. Exit\nEnter your choice: ");
         
         if (scanf("%d", &ch) != 1) break;
         
@@ -162,24 +155,20 @@ int main() {
             case 2:
                 printf("\nEnter key: ");
                 scanf("%d", &key);
-                ser(h, key);
+                search(h, key);
                 break;
             case 3:
                 printf("\nInorder Traversal: ");
                 inorder(h);
                 printf("\n");
-                break;
-            case 4:
                 printf("\nPreorder Traversal: ");
                 preorder(h);
                 printf("\n");
-                break;
-            case 5:
                 printf("\nPostorder Traversal: ");
                 postorder(h);
                 printf("\n");
                 break;
-            case 6:
+            case 4:
                 return 0;
             default:
                 printf("\nEnter a valid input\n");
