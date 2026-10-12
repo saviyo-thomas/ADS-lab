@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 09/09/2026
+EXPERIMENT NO: 16
+
 ALGORITHM: Huffman Coding (Greedy Minimum Spanning Tree-style coding)
 1. Create a leaf node for each unique character containing its frequency.
 2. Build a Min-Priority Queue of all leaf nodes.
@@ -9,6 +15,7 @@ ALGORITHM: Huffman Coding (Greedy Minimum Spanning Tree-style coding)
    d. Insert this new node back into the min-priority queue.
 4. The remaining node in priority queue is the Root of the Huffman Tree.
 5. Traverse the Huffman Tree from root, appending '0' for left branch and '1' for right branch to assign codes.
+===================================================================
 */
 
 /* 16. Implementation of Huffman algorithm */

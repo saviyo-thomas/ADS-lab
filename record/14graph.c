@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 25/08/2026
+EXPERIMENT NO: 14
+
 ALGORITHM: Graph Representation and Traversals (BFS & DFS)
 1. Represent graph using Adjacency Matrix or Adjacency List.
 2. Implement BREADTH FIRST SEARCH (BFS):
@@ -13,6 +19,7 @@ ALGORITHM: Graph Representation and Traversals (BFS & DFS)
       - Mark current vertex as visited, print it.
       - For each unvisited neighbor, recursively call DFS_Util on that neighbor.
 4. In main(), build graph and execute BFS and DFS traversals.
+===================================================================
 */
 
 /* 14. Implementation of graphs and graph traversals (BFS & DFS) */

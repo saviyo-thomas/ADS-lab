@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 05/07/2026
+EXPERIMENT NO: 02
+
 ALGORITHM: Linear Queue Implementation using Array
 1. Define a maximum size MAX for the queue array.
 2. Initialize an array of size MAX and two pointers 'front' and 'rear' to -1.
@@ -12,6 +18,7 @@ ALGORITHM: Linear Queue Implementation using Array
    c. If 'front' exceeds 'rear', reset both 'front' and 'rear' to -1.
 5. Implement DISPLAY operation to traverse from 'front' to 'rear'.
 6. Provide a menu-driven program in main() to allow users to enqueue, dequeue, and display.
+===================================================================
 */
 
 #include<stdio.h>
@@ -48,17 +55,14 @@ int main(){
 
 void enq(int d){
   if(isfull()){printf("\nQueue is full please wait till the queue is empty again"); return;}
-  if(f==-1)f=0; //to set f to 0 at first
+  if(f==-1)f=0;
   b++; a[b]=d;
 }
 
 void dq(){
     if(isempty()){printf("\nQueue is empty");return;}
-      else {
-            printf("\n%d is dequeued", a[f]);
-                f++; 
-                  }
-        if(f>b){f=-1; b=-1;} //reset when empty
+      else {  printf("\n%d is dequeued", a[f]); f++; }
+        if(f>b){f=-1; b=-1;}
 }
 
 void count(){

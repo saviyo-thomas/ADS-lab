@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 17/09/2026
+EXPERIMENT NO: 18
+
 ALGORITHM: Priority Queue Implementation
 1. Define structure representing queue element with 'data' and 'priority'.
 2. Initialize an array of elements with size = 0.
@@ -11,6 +17,7 @@ ALGORITHM: Priority Queue Implementation
    b. Remove the element with highest priority (typically at front or end, depending on sorting structure).
    c. Adjust remaining elements of the array.
 5. Implement DISPLAY operation and menu loop in main().
+===================================================================
 */
 
 /* 18. Implementation of priority queue */

@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 13/07/2026
+EXPERIMENT NO: 04
+
 ALGORITHM: Singly Linked List Operations (Menu-driven)
 1. Define a Node structure containing 'data' and a pointer 'next' to the next node.
 2. Initialize 'head' pointer to NULL.
@@ -12,6 +18,7 @@ ALGORITHM: Singly Linked List Operations (Menu-driven)
    c. From position: Traverse to node before target, update its next to skip target, free target.
 5. Implement DISPLAY operation to traverse the list from 'head' to NULL, printing each node's data.
 6. Provide a menu-driven loop in main().
+===================================================================
 */
 
 #include <stdio.h>

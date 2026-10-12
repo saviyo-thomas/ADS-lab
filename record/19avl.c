@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 21/09/2026
+EXPERIMENT NO: 19
+
 ALGORITHM: AVL Tree Operations (Insertion with Rotations)
 1. Define Node structure with 'data', 'left' and 'right' pointers, and 'height'.
 2. Implement helper functions: Get Height, Balance Factor (height(left) - height(right)).
@@ -17,6 +23,7 @@ ALGORITHM: AVL Tree Operations (Insertion with Rotations)
    c. Calculate Balance Factor.
    d. If unbalanced, apply rotations: LL (Right Rotate), RR (Left Rotate), LR (Left then Right), RL (Right then Left).
 5. Display AVL Tree using Inorder/Preorder traversal.
+===================================================================
 */
 
 #include <stdio.h>

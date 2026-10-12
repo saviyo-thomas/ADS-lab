@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 06/08/2026
+EXPERIMENT NO: 13
+
 ALGORITHM: Postfix Expression Evaluation
 1. Initialize an empty stack of size MAX to store operands.
 2. Read the postfix expression character by character from left to right.
@@ -9,6 +15,7 @@ ALGORITHM: Postfix Expression Evaluation
       - Perform the corresponding operation (op1 operator op2).
       - Push the resulting value back onto the stack.
 4. When the end of expression is reached, pop the final result from the stack and print it.
+===================================================================
 */
 
 //Infix to Postfix conversion using stack (linked list)

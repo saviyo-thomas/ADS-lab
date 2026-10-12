@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 26/09/2026
+EXPERIMENT NO: 20
+
 ALGORITHM: Hash Table with Collision Resolution (e.g., Linear Probing)
 1. Define Hash Table of size HASH_SIZE and initialize all slots to -1 (indicating empty).
 2. Define Hash Function: h(key) = key % HASH_SIZE.
@@ -12,6 +18,7 @@ ALGORITHM: Hash Table with Collision Resolution (e.g., Linear Probing)
    a. Calculate index = h(key).
    b. Probe sequentially until key is found or an empty slot (-1) is reached.
 5. Provide display function and driver program in main().
+===================================================================
 */
 
 /* 20. Implementation of hashing using separate chaining */

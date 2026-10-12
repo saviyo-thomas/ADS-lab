@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 02/08/2026
+EXPERIMENT NO: 12
+
 ALGORITHM: Heap Sort Implementation
 1. Define HEAPIFY function to maintain max-heap property for subtree rooted at index 'i' in array of size 'n':
    a. Set 'largest' as 'i', left child 'l' = 2*i + 1, right child 'r' = 2*i + 2.
@@ -11,6 +17,7 @@ ALGORITHM: Heap Sort Implementation
       - Swap array[0] (root/largest element) with array[i].
       - Call HEAPIFY on root with reduced heap size 'i'.
 3. In main(), read input array, sort it, and print sorted results.
+===================================================================
 */
 
 #include <stdio.h>

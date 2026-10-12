@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 04/09/2026
+EXPERIMENT NO: 15
+
 ALGORITHM: Binary Heap Operations (Insert / Extract Max or Min)
 1. Define max size and initialize heap array with 'size' = 0.
 2. Implement INSERT operation:
@@ -10,6 +16,7 @@ ALGORITHM: Binary Heap Operations (Insert / Extract Max or Min)
    b. Decrement size.
    c. Down-heapify (bubble down/heapify) from root to restore heap property.
 4. Provide a menu-driven interface to insert, extract, and display the heap.
+===================================================================
 */
 
 /* 15. Implementation of heap tree and operations */

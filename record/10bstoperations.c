@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 30/07/2026
+EXPERIMENT NO: 10
+
 ALGORITHM: Binary Search Tree (BST) Operations
 1. Define a Node structure with 'data', 'left' pointer, and 'right' pointer.
 2. Implement INSERT operation:
@@ -12,6 +18,7 @@ ALGORITHM: Binary Search Tree (BST) Operations
    a. If key is smaller/larger, recurse left/right.
    b. If key matches current node: If node has one or zero children, replace it with the non-null child and free node. If node has two children, find inorder successor (smallest in right subtree), replace node's value with successor's, and delete successor.
 5. Implement INORDER Traversal to display sorted elements.
+===================================================================
 */
 
 #include <stdio.h>

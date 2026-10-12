@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 05/07/2026
+EXPERIMENT NO: 01
+
 ALGORITHM: Stack Implementation using Array
 1. Define a maximum size MAX for the stack array.
 2. Initialize a stack array of size MAX and set the 'top' pointer to -1.
@@ -10,6 +16,7 @@ ALGORITHM: Stack Implementation using Array
    b. Otherwise, print/retrieve the element at stack[top] and decrement 'top'.
 5. Implement PEEK/DISPLAY operations to look at the top element or traverse from top to 0.
 6. Provide a menu-driven interface in main() to continuously run these operations until the user exits.
+===================================================================
 */
 
 #include<stdio.h>

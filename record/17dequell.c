@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 15/09/2026
+EXPERIMENT NO: 17
+
 ALGORITHM: Double Ended Queue (Deque) using Doubly Linked List
 1. Define a Node structure with 'prev', 'data', and 'next' pointers.
 2. Initialize 'front' and 'rear' pointers to NULL.
@@ -15,6 +21,7 @@ ALGORITHM: Double Ended Queue (Deque) using Doubly Linked List
    a. If empty, print underflow.
    b. Otherwise, temp = rear, rear = rear->prev. If rear is NULL, front = NULL; else rear->next = NULL. Free temp.
 7. Provide menu-driven implementation in main().
+===================================================================
 */
 
 #include <stdio.h>

@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 16/07/2026
+EXPERIMENT NO: 07
+
 ALGORITHM: Doubly Linked List Operations
 1. Define a Node structure containing 'data', a 'prev' pointer, and a 'next' pointer.
 2. Initialize 'head' pointer to NULL.
@@ -6,6 +12,7 @@ ALGORITHM: Doubly Linked List Operations
 4. Implement DELETE operations (beginning, end, position) by adjusting 'prev' and 'next' of surrounding nodes and freeing memory.
 5. Implement DISPLAY operations (forward traversal using 'next' and backward traversal using 'prev' pointers).
 6. Provide a menu-driven driver program in main().
+===================================================================
 */
 
 #include <stdio.h>

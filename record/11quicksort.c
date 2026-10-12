@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 31/07/2026
+EXPERIMENT NO: 11
+
 ALGORITHM: Quick Sort Implementation
 1. Define PARTITION function (using array, low, and high indices):
    a. Choose a pivot element (e.g., array[high]).
@@ -13,6 +19,7 @@ ALGORITHM: Quick Sort Implementation
       - Recursively call QUICKSORT on left sub-array (low to pi - 1).
       - Recursively call QUICKSORT on right sub-array (pi + 1 to high).
 3. In main(), read input array, call QUICKSORT, and print sorted array.
+===================================================================
 */
 
 #include <stdio.h>

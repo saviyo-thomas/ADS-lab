@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 19/07/2026
+EXPERIMENT NO: 08
+
 ALGORITHM: Circular Singly Linked List Operations
 1. Define a Node structure containing 'data' and 'next' pointer.
 2. Initialize 'head' pointer to NULL.
@@ -11,6 +17,7 @@ ALGORITHM: Circular Singly Linked List Operations
    b. If single node, free it and set 'head' to NULL.
    c. Otherwise, update the preceding node's 'next' to bypass the deleted node and free memory.
 6. Implement DISPLAY operation by traversing starting from 'head' and stopping when we loop back to 'head'.
+===================================================================
 */
 
 #include <stdio.h>

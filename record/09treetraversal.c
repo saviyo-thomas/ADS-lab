@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 29/07/2026
+EXPERIMENT NO: 09
+
 ALGORITHM: Binary Tree Traversals (Preorder, Inorder, Postorder)
 1. Define a Node structure representing a binary tree node with 'data', 'left' pointer, and 'right' pointer.
 2. Implement INORDER Traversal (Left, Root, Right):
@@ -17,6 +23,7 @@ ALGORITHM: Binary Tree Traversals (Preorder, Inorder, Postorder)
    c. Recursively call Postorder on right subtree.
    d. Process/print root node data.
 5. Provide a driver main() to build a sample binary tree and execute traversals.
+===================================================================
 */
 
 #include <stdio.h>

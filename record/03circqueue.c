@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 06/07/2026
+EXPERIMENT NO: 03
+
 ALGORITHM: Circular Queue Implementation using Array
 1. Define a maximum size MAX for the circular queue.
 2. Initialize an array of size MAX and pointers 'front' and 'rear' to -1.
@@ -13,6 +19,7 @@ ALGORITHM: Circular Queue Implementation using Array
    d. Otherwise, update 'front' as (front + 1) % MAX.
 5. Implement DISPLAY operation to traverse from 'front' to 'rear' circularly.
 6. Provide a menu-driven interface in main().
+===================================================================
 */
 
 #include <stdio.h>

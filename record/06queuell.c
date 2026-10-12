@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 15/07/2026
+EXPERIMENT NO: 06
+
 ALGORITHM: Queue Implementation using Singly Linked List
 1. Define a Node structure with 'data' and a 'next' pointer.
 2. Initialize 'front' and 'rear' pointers to NULL.
@@ -14,6 +20,7 @@ ALGORITHM: Queue Implementation using Singly Linked List
    e. Free the temporary node and retrieve its data.
 5. Implement DISPLAY operation by traversing from 'front' to NULL.
 6. Provide a menu-driven interface in main().
+===================================================================
 */
 
 #include<stdio.h>

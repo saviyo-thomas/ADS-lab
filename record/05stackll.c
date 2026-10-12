@@ -1,4 +1,10 @@
 /*
+===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 13/07/2026
+EXPERIMENT NO: 05
+
 ALGORITHM: Stack Implementation using Singly Linked List
 1. Define a Node structure with 'data' and a 'next' pointer.
 2. Initialize 'top' pointer to NULL.
@@ -14,6 +20,7 @@ ALGORITHM: Stack Implementation using Singly Linked List
    d. Free the temporary node and return/print its data.
 5. Implement DISPLAY operation by traversing from 'top' to NULL.
 6. Provide a menu-driven program in main().
+===================================================================
 */
 
 //stack using linked list
