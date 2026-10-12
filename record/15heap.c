@@ -1,3 +1,17 @@
+/*
+ALGORITHM: Binary Heap Operations (Insert / Extract Max or Min)
+1. Define max size and initialize heap array with 'size' = 0.
+2. Implement INSERT operation:
+   a. Add element at the end of the heap array.
+   b. Increment size.
+   c. Up-heapify (bubble up): Compare the added element with its parent. If it violates heap property, swap them and repeat for parent until root is reached.
+3. Implement EXTRACT root (Max/Min) operation:
+   a. Replace root element with the last element of the heap array.
+   b. Decrement size.
+   c. Down-heapify (bubble down/heapify) from root to restore heap property.
+4. Provide a menu-driven interface to insert, extract, and display the heap.
+*/
+
 /* 15. Implementation of heap tree and operations */
 #include <stdio.h>
 

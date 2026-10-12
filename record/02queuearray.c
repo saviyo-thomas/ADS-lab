@@ -1,3 +1,19 @@
+/*
+ALGORITHM: Linear Queue Implementation using Array
+1. Define a maximum size MAX for the queue array.
+2. Initialize an array of size MAX and two pointers 'front' and 'rear' to -1.
+3. Implement ENQUEUE operation:
+   a. Check if 'rear' equals MAX - 1 (Queue Overflow). If yes, return.
+   b. If 'front' is -1, set 'front' to 0.
+   c. Increment 'rear' and insert the element at queue[rear].
+4. Implement DEQUEUE operation:
+   a. Check if 'front' is -1 or greater than 'rear' (Queue Underflow). If yes, return.
+   b. Otherwise, print/retrieve queue[front] and increment 'front'.
+   c. If 'front' exceeds 'rear', reset both 'front' and 'rear' to -1.
+5. Implement DISPLAY operation to traverse from 'front' to 'rear'.
+6. Provide a menu-driven program in main() to allow users to enqueue, dequeue, and display.
+*/
+
 #include<stdio.h>
 #include<stdbool.h>
 #define size 3

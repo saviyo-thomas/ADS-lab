@@ -1,3 +1,24 @@
+/*
+ALGORITHM: AVL Tree Operations (Insertion with Rotations)
+1. Define Node structure with 'data', 'left' and 'right' pointers, and 'height'.
+2. Implement helper functions: Get Height, Balance Factor (height(left) - height(right)).
+3. Implement ROTATION functions:
+   a. Left Rotate (y):
+      - x = y->right, T2 = x->left.
+      - x->left = y, y->right = T2.
+      - Update heights of y and x. Return x.
+   b. Right Rotate (y):
+      - x = y->left, T2 = x->right.
+      - x->right = y, y->left = T2.
+      - Update heights of y and x. Return x.
+4. Implement INSERT operation:
+   a. Perform standard BST insertion recursively.
+   b. Update height of current node.
+   c. Calculate Balance Factor.
+   d. If unbalanced, apply rotations: LL (Right Rotate), RR (Left Rotate), LR (Left then Right), RL (Right then Left).
+5. Display AVL Tree using Inorder/Preorder traversal.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

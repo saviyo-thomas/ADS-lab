@@ -1,3 +1,18 @@
+/*
+ALGORITHM: Circular Singly Linked List Operations
+1. Define a Node structure containing 'data' and 'next' pointer.
+2. Initialize 'head' pointer to NULL.
+3. Maintain circular property where the last node's 'next' points back to 'head'.
+4. Implement INSERT operation:
+   a. Create node. If list is empty, point its 'next' to itself and set 'head' to it.
+   b. Otherwise, insert node and update the last node's 'next' to point to the new 'head'.
+5. Implement DELETE operation:
+   a. If list is empty, return.
+   b. If single node, free it and set 'head' to NULL.
+   c. Otherwise, update the preceding node's 'next' to bypass the deleted node and free memory.
+6. Implement DISPLAY operation by traversing starting from 'head' and stopping when we loop back to 'head'.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

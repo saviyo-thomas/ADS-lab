@@ -1,3 +1,20 @@
+/*
+ALGORITHM: Circular Queue Implementation using Array
+1. Define a maximum size MAX for the circular queue.
+2. Initialize an array of size MAX and pointers 'front' and 'rear' to -1.
+3. Implement ENQUEUE operation:
+   a. Check if Queue is Full: ((rear + 1) % MAX == front). If yes, display Overflow.
+   b. If 'front' is -1, set 'front' to 0.
+   c. Update 'rear' as (rear + 1) % MAX and insert the element at queue[rear].
+4. Implement DEQUEUE operation:
+   a. Check if Queue is Empty: (front == -1). If yes, display Underflow.
+   b. Retrieve/print the element at queue[front].
+   c. If front == rear (only one element), reset both 'front' and 'rear' to -1.
+   d. Otherwise, update 'front' as (front + 1) % MAX.
+5. Implement DISPLAY operation to traverse from 'front' to 'rear' circularly.
+6. Provide a menu-driven interface in main().
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

@@ -1,3 +1,20 @@
+/*
+ALGORITHM: Graph Representation and Traversals (BFS & DFS)
+1. Represent graph using Adjacency Matrix or Adjacency List.
+2. Implement BREADTH FIRST SEARCH (BFS):
+   a. Initialize an empty queue and a 'visited' array of size V to 0.
+   b. Mark starting vertex as visited and enqueue it.
+   c. While queue is not empty:
+      - Dequeue vertex 'u', print/process it.
+      - For each unvisited neighbor 'v' of 'u', mark 'v' as visited and enqueue 'v'.
+3. Implement DEPTH FIRST SEARCH (DFS):
+   a. Create a 'visited' array initialized to 0.
+   b. Call recursive DFS_Util helper:
+      - Mark current vertex as visited, print it.
+      - For each unvisited neighbor, recursively call DFS_Util on that neighbor.
+4. In main(), build graph and execute BFS and DFS traversals.
+*/
+
 /* 14. Implementation of graphs and graph traversals (BFS & DFS) */
 #include <stdio.h>
 #include <stdlib.h>

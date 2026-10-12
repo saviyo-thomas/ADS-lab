@@ -1,3 +1,24 @@
+/*
+ALGORITHM: Binary Tree Traversals (Preorder, Inorder, Postorder)
+1. Define a Node structure representing a binary tree node with 'data', 'left' pointer, and 'right' pointer.
+2. Implement INORDER Traversal (Left, Root, Right):
+   a. If node is NULL, return.
+   b. Recursively call Inorder on left subtree.
+   c. Process/print root node data.
+   d. Recursively call Inorder on right subtree.
+3. Implement PREORDER Traversal (Root, Left, Right):
+   a. If node is NULL, return.
+   b. Process/print root node data.
+   c. Recursively call Preorder on left subtree.
+   d. Recursively call Preorder on right subtree.
+4. Implement POSTORDER Traversal (Left, Right, Root):
+   a. If node is NULL, return.
+   b. Recursively call Postorder on left subtree.
+   c. Recursively call Postorder on right subtree.
+   d. Process/print root node data.
+5. Provide a driver main() to build a sample binary tree and execute traversals.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

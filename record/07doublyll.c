@@ -1,3 +1,13 @@
+/*
+ALGORITHM: Doubly Linked List Operations
+1. Define a Node structure containing 'data', a 'prev' pointer, and a 'next' pointer.
+2. Initialize 'head' pointer to NULL.
+3. Implement INSERT operations (beginning, end, position) by updating 'prev' and 'next' pointers of adjacent nodes.
+4. Implement DELETE operations (beginning, end, position) by adjusting 'prev' and 'next' of surrounding nodes and freeing memory.
+5. Implement DISPLAY operations (forward traversal using 'next' and backward traversal using 'prev' pointers).
+6. Provide a menu-driven driver program in main().
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,3 +1,22 @@
+/*
+ALGORITHM: Double Ended Queue (Deque) using Doubly Linked List
+1. Define a Node structure with 'prev', 'data', and 'next' pointers.
+2. Initialize 'front' and 'rear' pointers to NULL.
+3. Implement INSERT FRONT:
+   a. Create new node. If empty, front = rear = node.
+   b. Otherwise, node->next = front, front->prev = node, front = node.
+4. Implement INSERT REAR:
+   a. Create new node. If empty, front = rear = node.
+   b. Otherwise, node->prev = rear, rear->next = node, rear = node.
+5. Implement DELETE FRONT:
+   a. If empty, print underflow.
+   b. Otherwise, temp = front, front = front->next. If front is NULL, rear = NULL; else front->prev = NULL. Free temp.
+6. Implement DELETE REAR:
+   a. If empty, print underflow.
+   b. Otherwise, temp = rear, rear = rear->prev. If rear is NULL, front = NULL; else rear->next = NULL. Free temp.
+7. Provide menu-driven implementation in main().
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

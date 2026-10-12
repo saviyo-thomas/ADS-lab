@@ -1,3 +1,19 @@
+/*
+ALGORITHM: Binary Search Tree (BST) Operations
+1. Define a Node structure with 'data', 'left' pointer, and 'right' pointer.
+2. Implement INSERT operation:
+   a. If tree is empty, return a new node.
+   b. If data is less than current node's data, recursively insert in the left subtree.
+   c. If data is greater, recursively insert in the right subtree.
+3. Implement SEARCH operation:
+   a. If root is NULL or key matches root's data, return root.
+   b. If key is smaller, search left subtree; otherwise, search right subtree.
+4. Implement DELETE operation:
+   a. If key is smaller/larger, recurse left/right.
+   b. If key matches current node: If node has one or zero children, replace it with the non-null child and free node. If node has two children, find inorder successor (smallest in right subtree), replace node's value with successor's, and delete successor.
+5. Implement INORDER Traversal to display sorted elements.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

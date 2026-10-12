@@ -1,3 +1,19 @@
+/*
+ALGORITHM: Singly Linked List Operations (Menu-driven)
+1. Define a Node structure containing 'data' and a pointer 'next' to the next node.
+2. Initialize 'head' pointer to NULL.
+3. Implement INSERT operations:
+   a. At the beginning: Create new node, set its next to head, update head to new node.
+   b. At the end: Create new node, traverse to the last node, set its next to new node.
+   c. At a specific position: Traverse to target position, update next pointers to insert node.
+4. Implement DELETE operations:
+   a. From beginning: Update head to head->next, free original head.
+   b. From end: Traverse to second-to-last node, free last node, set its next to NULL.
+   c. From position: Traverse to node before target, update its next to skip target, free target.
+5. Implement DISPLAY operation to traverse the list from 'head' to NULL, printing each node's data.
+6. Provide a menu-driven loop in main().
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

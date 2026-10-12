@@ -1,3 +1,18 @@
+/*
+ALGORITHM: Priority Queue Implementation
+1. Define structure representing queue element with 'data' and 'priority'.
+2. Initialize an array of elements with size = 0.
+3. Implement ENQUEUE (Insertion):
+   a. If queue is full, return.
+   b. Insert element at the end of the array.
+   c. Sort or shift elements based on priority so that highest priority item is positioned properly.
+4. Implement DEQUEUE (Deletion):
+   a. If queue is empty, return underflow.
+   b. Remove the element with highest priority (typically at front or end, depending on sorting structure).
+   c. Adjust remaining elements of the array.
+5. Implement DISPLAY operation and menu loop in main().
+*/
+
 /* 18. Implementation of priority queue */
 #include <stdio.h>
 #define MAX 100

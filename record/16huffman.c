@@ -1,3 +1,16 @@
+/*
+ALGORITHM: Huffman Coding (Greedy Minimum Spanning Tree-style coding)
+1. Create a leaf node for each unique character containing its frequency.
+2. Build a Min-Priority Queue of all leaf nodes.
+3. While there is more than one node in the queue:
+   a. Extract the two nodes with the lowest frequency from min-heap (let them be left and right).
+   b. Create a new internal node with frequency equal to sum of left and right frequencies.
+   c. Set its left child to 'left' and right child to 'right'.
+   d. Insert this new node back into the min-priority queue.
+4. The remaining node in priority queue is the Root of the Huffman Tree.
+5. Traverse the Huffman Tree from root, appending '0' for left branch and '1' for right branch to assign codes.
+*/
+
 /* 16. Implementation of Huffman algorithm */
 #include <stdio.h>
 #include <stdlib.h>

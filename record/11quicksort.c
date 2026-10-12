@@ -1,3 +1,20 @@
+/*
+ALGORITHM: Quick Sort Implementation
+1. Define PARTITION function (using array, low, and high indices):
+   a. Choose a pivot element (e.g., array[high]).
+   b. Maintain an index 'i' initialized to low - 1.
+   c. Loop 'j' from low to high - 1:
+      - If array[j] <= pivot, increment 'i' and swap array[i] with array[j].
+   d. Swap array[i + 1] with array[high] (pivot position).
+   e. Return partition index (i + 1).
+2. Define QUICKSORT function (array, low, high):
+   a. If low < high:
+      - Partition the array to find pivot index 'pi'.
+      - Recursively call QUICKSORT on left sub-array (low to pi - 1).
+      - Recursively call QUICKSORT on right sub-array (pi + 1 to high).
+3. In main(), read input array, call QUICKSORT, and print sorted array.
+*/
+
 #include <stdio.h>
 #define size 10
 

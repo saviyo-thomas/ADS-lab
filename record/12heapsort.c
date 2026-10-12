@@ -1,3 +1,18 @@
+/*
+ALGORITHM: Heap Sort Implementation
+1. Define HEAPIFY function to maintain max-heap property for subtree rooted at index 'i' in array of size 'n':
+   a. Set 'largest' as 'i', left child 'l' = 2*i + 1, right child 'r' = 2*i + 2.
+   b. If 'l' < n and array[l] > array[largest], set 'largest' to 'l'.
+   c. If 'r' < n and array[r] > array[largest], set 'largest' to 'r'.
+   d. If 'largest' is not equal to 'i', swap array[i] with array[largest] and recursively heapify the affected subtree.
+2. Define HEAPSORT function:
+   a. Build max heap: Loop from n/2 - 1 down to 0, calling HEAPIFY.
+   b. Sort phase: Loop from n-1 down to 1:
+      - Swap array[0] (root/largest element) with array[i].
+      - Call HEAPIFY on root with reduced heap size 'i'.
+3. In main(), read input array, sort it, and print sorted results.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,3 +1,19 @@
+/*
+ALGORITHM: Hash Table with Collision Resolution (e.g., Linear Probing)
+1. Define Hash Table of size HASH_SIZE and initialize all slots to -1 (indicating empty).
+2. Define Hash Function: h(key) = key % HASH_SIZE.
+3. Implement INSERT operation:
+   a. Calculate index = h(key).
+   b. If table[index] is empty, insert key.
+   c. If collision occurs (table[index] is occupied):
+      - Use Linear Probing: index = (index + 1) % HASH_SIZE.
+      - Repeat until an empty slot is found or table is fully scanned.
+4. Implement SEARCH operation:
+   a. Calculate index = h(key).
+   b. Probe sequentially until key is found or an empty slot (-1) is reached.
+5. Provide display function and driver program in main().
+*/
+
 /* 20. Implementation of hashing using separate chaining */
 #include <stdio.h>
 #include <stdlib.h>

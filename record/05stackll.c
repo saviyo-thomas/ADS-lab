@@ -1,3 +1,21 @@
+/*
+ALGORITHM: Stack Implementation using Singly Linked List
+1. Define a Node structure with 'data' and a 'next' pointer.
+2. Initialize 'top' pointer to NULL.
+3. Implement PUSH operation:
+   a. Dynamically allocate memory for a new node.
+   b. If memory allocation fails, print Stack Overflow.
+   c. Set new_node->data = value and new_node->next = top.
+   d. Update 'top' to point to the new node.
+4. Implement POP operation:
+   a. Check if 'top' is NULL (Stack Underflow). If yes, return.
+   b. Create a temporary pointer pointing to 'top'.
+   c. Update 'top' to top->next.
+   d. Free the temporary node and return/print its data.
+5. Implement DISPLAY operation by traversing from 'top' to NULL.
+6. Provide a menu-driven program in main().
+*/
+
 //stack using linked list
 #include<stdio.h>
 #include<stdlib.h>

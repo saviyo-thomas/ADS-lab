@@ -1,3 +1,16 @@
+/*
+ALGORITHM: Postfix Expression Evaluation
+1. Initialize an empty stack of size MAX to store operands.
+2. Read the postfix expression character by character from left to right.
+3. For each character:
+   a. If it is an operand (digit), push its numeric value onto stack.
+   b. If it is an operator (e.g., +, -, *, /):
+      - Pop the top two elements (op2 first, then op1).
+      - Perform the corresponding operation (op1 operator op2).
+      - Push the resulting value back onto the stack.
+4. When the end of expression is reached, pop the final result from the stack and print it.
+*/
+
 //Infix to Postfix conversion using stack (linked list)
 #include<stdio.h>
 #include<stdlib.h>
