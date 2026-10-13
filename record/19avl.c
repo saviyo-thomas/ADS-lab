@@ -22,7 +22,9 @@ ALGORITHM: AVL Tree Operations (Insertion with Rotations)
  b. Update height of current node.
  c. Calculate Balance Factor.
  d. If unbalanced, apply rotations: LL (Right Rotate), RR (Left Rotate), LR (Left then Right), RL (Right then Left).
-5. Display AVL Tree using Inorder/Preorder traversal.
+5. Implement SEARCH operation to recursively find key and report found/not found.
+6. Display AVL Tree using Inorder, Preorder and Postorder traversals.
+7. Provide menu-driven main() to insert, search, traverse and exit.
 ===================================================================
  */
 
@@ -204,3 +206,120 @@ int main() {
   }
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 10
+   Inserted and balanced successfully.
+
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 20
+   Inserted and balanced successfully.
+
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 30
+   Inserted and balanced successfully.
+
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 40
+   Inserted and balanced successfully.
+
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 50
+   Inserted and balanced successfully.
+
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 25
+   Inserted and balanced successfully.
+
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 3
+
+   Inorder Traversal: 10 20 25 30 40 50
+
+   Preorder Traversal: 30 20 10 25 40 50
+
+   Postorder Traversal: 10 25 20 50 40 30
+
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 2
+
+   Enter key: 25
+
+   Key is found
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 2
+
+   Enter key: 100
+
+   Key is not found
+
+   ==== AVL Tree Menu =====
+   1. Insertion (Auto-Balancing via Rotations)
+   2. Search
+   3. Traversal
+   4. Exit
+   Enter your choice: 4
+*/
