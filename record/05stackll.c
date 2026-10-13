@@ -9,17 +9,14 @@ ALGORITHM: Stack Implementation using Singly Linked List
 1. Define a Node structure with 'data' and a 'next' pointer.
 2. Initialize 'top' pointer to NULL.
 3. Implement PUSH operation:
- a. Dynamically allocate memory for a new node.
- b. If memory allocation fails, print Stack Overflow.
- c. Set new_node->data = value and new_node->next = top.
- d. Update 'top' to point to the new node.
+ a. Read data and dynamically allocate memory for a new node.
+ b. Set new_node->data = value and new_node->next = top.
+ c. Update 'top' to point to the new node.
 4. Implement POP operation:
  a. Check if 'top' is NULL (Stack Underflow). If yes, return.
- b. Create a temporary pointer pointing to 'top'.
- c. Update 'top' to top->next.
- d. Free the temporary node and return/print its data.
-5. Implement DISPLAY operation by traversing from 'top' to NULL.
-6. Provide a menu-driven program in main().
+ b. Print top->data, update 'top' to top->next and free old top.
+5. Implement PEEK operation by printing top->data, or Underflow if empty.
+6. Provide a menu-driven program in main() to push, pop, peek and exit.
 ===================================================================
  */
 
@@ -85,3 +82,65 @@ void peek(n** h){
   else{printf("%d is at the top",(*h)->d);}
   return;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :2
+   !!Stack Underflow!!
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :1
+   Enter data :10
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :1
+   Enter data :20
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :3
+   20 is at the top
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :2
+   20 popped
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :3
+   10 is at the top
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :2
+   10 popped
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :2
+   !!Stack Underflow!!
+   1.Push
+   2.Pop
+   3.Peek
+   4.Exit
+   Enter choice :4
+*/
