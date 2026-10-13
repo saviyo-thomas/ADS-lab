@@ -5,7 +5,7 @@ ROLL NO: CS11
 DATE: 09/09/2026
 EXPERIMENT NO: 16
 
-ALGORITHM: Huffman Coding (Greedy Minimum Spanning Tree-style coding)
+ALGORITHM: Huffman Coding (Greedy prefix coding)
 1. Create a leaf node for each unique character containing its frequency.
 2. Build a Min-Priority Queue of all leaf nodes.
 3. While there is more than one node in the queue:
@@ -160,3 +160,19 @@ int main() {
   HuffmanCodes(arr, freq, size);
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   Huffman Codes:
+   f: 0
+   c: 100
+   d: 101
+   a: 1100
+   b: 1101
+   e: 111
+*/
