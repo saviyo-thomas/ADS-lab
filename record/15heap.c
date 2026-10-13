@@ -100,3 +100,92 @@ int main() {
   }
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 2
+   Heap underflow!
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value to insert: 40
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value to insert: 20
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value to insert: 60
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value to insert: 10
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value to insert: 30
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 3
+   Heap elements: 60 30 40 10 20
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 2
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 3
+   Heap elements: 40 30 20 10
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 2
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 3
+   Heap elements: 30 10 20
+
+   1. Insert
+   2. Delete Root
+   3. Display
+   4. Exit
+   Enter choice: 4
+*/
