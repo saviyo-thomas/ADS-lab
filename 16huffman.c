@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_TREE_HT 100
+#define MAX_STR_LEN 1000
+#define ASCII_SIZE 256
 
 struct MinHeapNode {
     char data;
@@ -127,7 +130,7 @@ void printCodes(struct MinHeapNode* root, int arr[], int top) {
         printCodes(root->right, arr, top + 1);
     }
     if (isLeaf(root)) {
-        printf("  %c   |   %d   |   ", root->data, root->freq);
+        printf("  %c   |   %2d   |   ", root->data, root->freq);
         printArr(arr, top);
     }
 }
@@ -141,24 +144,53 @@ void HuffmanCodes(char data[], int freq[], int size) {
 }
 
 int main() {
-    int n;
-    printf("Enter the number of unique characters: ");
-    if (scanf("%d", &n) != 1 || n <= 0) {
-        printf("Invalid number of characters.\n");
+    char str[MAX_STR_LEN];
+    int freq_map[ASCII_SIZE] = {0};
+
+    printf("Enter the input string: ");
+    if (fgets(str, sizeof(str), stdin) == NULL) {
+        printf("Error reading input.\n");
         return 1;
     }
 
-    char* arr = (char*)malloc(n * sizeof(char));
-    int* freq = (int*)malloc(n * sizeof(int));
-
-    for (int i = 0; i < n; i++) {
-        printf("Enter character %d: ", i + 1);
-        scanf(" %c", &arr[i]);
-        printf("Enter frequency for '%c': ", arr[i]);
-        scanf("%d", &freq[i]);
+    // Remove trailing newline character if present
+    size_t len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n') {
+        str[len - 1] = '\0';
+        len--;
     }
 
-    HuffmanCodes(arr, freq, n);
+    if (len == 0) {
+        printf("Empty string entered.\n");
+        return 1;
+    }
+
+    // Calculate frequency of each unique character
+    for (size_t i = 0; i < len; i++) {
+        freq_map[(unsigned char)str[i]]++;
+    }
+
+    // Count unique characters
+    int unique_count = 0;
+    for (int i = 0; i < ASCII_SIZE; i++) {
+        if (freq_map[i] > 0) {
+            unique_count++;
+        }
+    }
+
+    char* arr = (char*)malloc(unique_count * sizeof(char));
+    int* freq = (int*)malloc(unique_count * sizeof(int));
+
+    int index = 0;
+    for (int i = 0; i < ASCII_SIZE; i++) {
+        if (freq_map[i] > 0) {
+            arr[index] = (char)i;
+            freq[index] = freq_map[i];
+            index++;
+        }
+    }
+
+    HuffmanCodes(arr, freq, unique_count);
 
     free(arr);
     free(freq);
