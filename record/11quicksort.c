@@ -10,7 +10,7 @@ ALGORITHM: Quick Sort Implementation
  a. Choose a pivot element (e.g., array[high]).
  b. Maintain an index 'i' initialized to low - 1.
  c. Loop 'j' from low to high - 1:
-  - If array[j] <= pivot, increment 'i' and swap array[i] with array[j].
+  - If array[j] < pivot, increment 'i' and swap array[i] with array[j].
  d. Swap array[i + 1] with array[high] (pivot position).
  e. Return partition index (i + 1).
 2. Define QUICKSORT function (array, low, high):
@@ -73,3 +73,15 @@ int main() {
   printf("\n");
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   Enter 10  elements to sort separated by space:64 34 25 12 22 11 90 5 77 30
+
+    Sorted array :5 11 12 22 25 30 34 64 77 90
+*/
