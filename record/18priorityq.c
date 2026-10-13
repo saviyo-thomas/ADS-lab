@@ -6,6 +6,21 @@ DATE: 17/09/2026
 EXPERIMENT NO: 18
 
 ALGORITHM: Priority Queue Implementation
+1. Define an Item structure with 'data' and 'priority' and an array pq[MAX] with 'size' = 0.
+2. Implement HIGHERPRIORITY(a, b) helper:
+ a. If priorities are equal, return true if a.data > b.data.
+ b. Otherwise return true if a.priority > b.priority.
+3. Implement ENQUEUE operation:
+ a. Check if 'size' equals MAX (Overflow). If yes, return.
+ b. Insert new item at pq[size] and increment 'size'.
+ c. Bubble up: While i > 0, compare with parent (i-1)/2 and swap if child has higher priority.
+4. Implement DEQUEUE operation:
+ a. Check if 'size' equals 0 (Underflow). If yes, return.
+ b. Print pq[0] as deleted element.
+ c. Replace root with last element pq[size-1] and decrement 'size'.
+ d. Bubble down: Compare with left (2*i+1) and right (2*i+2) children, swap with highest priority child until heap property is restored.
+5. Implement DISPLAY operation to traverse pq[0] to pq[size-1] printing Value and Priority.
+6. Provide a menu-driven interface in main() to enqueue, dequeue, display and exit.
 
 ===================================================================
  */
@@ -146,3 +161,115 @@ int main() {
 
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 3
+   Priority Queue is empty!
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value and priority: 10 1
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value and priority: 20 3
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value and priority: 15 2
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 1
+   Enter value and priority: 30 3
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 3
+   Value Priority
+   30 3
+   20 3
+   15 2
+   10 1
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 2
+   Deleted element: 30
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 3
+   Value Priority
+   20 3
+   10 1
+   15 2
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 2
+   Deleted element: 20
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 2
+   Deleted element: 15
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 2
+   Deleted element: 10
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 2
+   Priority Queue Underflow!
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 3
+   Priority Queue is empty!
+
+   1. Enqueue
+   2. Dequeue
+   3. Display
+   4. Exit
+   Enter choice: 4
+*/
