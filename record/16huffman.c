@@ -168,12 +168,23 @@ int main() {
    OUTPUT
 
    CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+Enter the input string: i have never even tried to be a good person
 
-   Huffman Codes:
-   f: 0
-   c: 100
-   d: 101
-   a: 1100
-   b: 1101
-   e: 111
+Char  |  Freq  |  Huffman Code
+-----------------------------
+  e   |    8   |   00
+      |    9   |   01
+  p   |    1   |   10000
+  b   |    1   |   10001
+  h   |    1   |   10010
+  d   |    2   |   10011
+  v   |    3   |   1010
+  n   |    3   |   1011
+  r   |    3   |   1100
+  t   |    2   |   11010
+  g   |    1   |   110110
+  s   |    1   |   110111
+  i   |    2   |   11100
+  a   |    2   |   11101
+  o   |    4   |   1111
 */
