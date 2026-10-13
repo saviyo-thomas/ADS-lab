@@ -17,9 +17,8 @@ ALGORITHM: Binary Heap Operations (Insert / Extract Max or Min)
  c. Down-heapify (bubble down/heapify) from root to restore heap property.
 4. Provide a menu-driven interface to insert, extract, and display the heap.
 ===================================================================
- */
-
-/* 15. Implementation of heap tree and operations */
+SOURCE CODE: Implementation of heap tree and operations
+*/
 #include <stdio.h>
 
 void swap(int* a, int* b) {

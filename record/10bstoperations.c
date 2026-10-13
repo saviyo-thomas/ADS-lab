@@ -18,7 +18,8 @@ ALGORITHM: Binary Search Tree (BST) Operations
 4. Implement INORDER, PREORDER and POSTORDER traversals recursively to display elements.
 5. Provide a menu-driven main() to insert, search, display traversals and exit.
 ===================================================================
- */
+SOURCE CODE: Binary Search Tree (BST) Operations
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

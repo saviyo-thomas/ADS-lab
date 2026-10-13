@@ -19,7 +19,8 @@ ALGORITHM: Linear Queue Implementation using Array
 5. Implement DISPLAY and COUNT operations to traverse from 'front' to 'rear' and print (rear-front+1).
 6. Provide a menu-driven program in main() to allow users to enqueue, dequeue, display, count and exit.
 ===================================================================
- */
+SOURCE CODE: Linear Queue implementation using array 
+*/
 
 #include<stdio.h>
 #include<stdbool.h>

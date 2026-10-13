@@ -20,7 +20,8 @@ c. While queue is not empty:
   - For each unvisited neighbor, recursively call DFS_Util on that neighbor.
 4. In main(), build graph and execute BFS and DFS traversals.
 ===================================================================
- */
+SOURCE CODE: Graph Representation and Traversals (BFS & DFS)
+*/
 
 /* 14. Implementation of graphs and graph traversals (BFS & DFS) */
 #include <stdio.h>

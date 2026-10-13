@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 06/07/2026
@@ -22,7 +22,8 @@ ALGORITHM: Circular Queue Implementation using Linked List (with Size Limit)
 6. Implement DISPLAY operation to traverse from 'front' for current_size nodes and COUNT to print current_size.
 7. Provide a menu-driven interface in main() to enqueue, dequeue, display, count and exit.
 ===================================================================
- */
+SOURCE CODE: Circular Queue implementation using linked list with size limit
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 21/09/2026
@@ -26,7 +26,8 @@ ALGORITHM: AVL Tree Operations (Insertion with Rotations)
 6. Display AVL Tree using Inorder, Preorder and Postorder traversals.
 7. Provide menu-driven main() to insert, search, traverse and exit.
 ===================================================================
- */
+SOURCE CODE: AVL Tree Operations (Insertion with Rotations)
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

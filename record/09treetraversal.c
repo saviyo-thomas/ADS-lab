@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 29/07/2026
@@ -19,7 +19,8 @@ ALGORITHM: Binary Search Tree Operations with Traversals
 5. Implement INORDER (Left, Root, Right), PREORDER (Root, Left, Right) and POSTORDER (Left, Right, Root) traversals recursively.
 6. Provide a menu-driven main() to insert, delete, search, display traversals and exit.
 ===================================================================
- */
+SOURCE CODE: Binary Search Tree Operations with Traversals
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -16,6 +16,7 @@ ALGORITHM: Huffman Coding (Greedy prefix coding)
 4. The remaining node in priority queue is the Root of the Huffman Tree.
 5. Traverse the Huffman Tree from root, appending '0' for left branch and '1' for right branch to assign codes.
 ===================================================================
+SOURCE CODE: Huffman Coding Implementation
 */
 
 /* 16. Implementation of Huffman algorithm */

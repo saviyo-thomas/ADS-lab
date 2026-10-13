@@ -18,7 +18,8 @@ ALGORITHM: Heap Sort Implementation
   - Call HEAPIFY on root with reduced heap size 'i'.
 3. In main(), read input array, sort it, and print sorted results.
 ===================================================================
- */
+SOURCE CODE: Heap Sort Implementation
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 16/07/2026
@@ -13,7 +13,8 @@ ALGORITHM: Doubly Linked List Operations
 5. Implement DISPLAY operation by forward traversal from 'head' using 'next' pointers.
 6. Provide a menu-driven driver program in main() to insert, delete, display and exit.
 ===================================================================
- */
+SOURCE CODE: Doubly Linked List Operations
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 13/07/2026
@@ -18,7 +18,8 @@ ALGORITHM: Stack Implementation using Singly Linked List
 5. Implement PEEK operation by printing top->data, or Underflow if empty.
 6. Provide a menu-driven program in main() to push, pop, peek and exit.
 ===================================================================
- */
+SOURCE CODE: Stack Implementation using Singly Linked List
+*/
 
 //stack using linked list
 #include<stdio.h>

@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 26/09/2026
@@ -17,9 +17,8 @@ ALGORITHM: Hash Table with Separate Chaining
 5. Implement DISPLAY operation to print each index chain ending with NULL.
 6. Provide driver program in main() to insert, display and exit.
 ===================================================================
- */
-
-/* 20. Implementation of hashing using separate chaining */
+SOURCE CODE: Implementation of hashing using separate chaining 
+*/
 #include <stdio.h>
 #include <stdlib.h>
 

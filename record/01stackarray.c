@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 05/07/2026
@@ -17,7 +17,8 @@ ALGORITHM: Stack Implementation using Array
 5. Implement PEEK operation to look at the top element.
 6. Provide a menu-driven interface in main() to continuously run these operations until the user exits.
 ===================================================================
- */
+SOURCE CODE: Stack implementation using array
+*/
 
 #include<stdio.h>
 

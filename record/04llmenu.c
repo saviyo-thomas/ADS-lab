@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 13/07/2026
@@ -19,7 +19,8 @@ ALGORITHM: Singly Linked List Operations (Menu-driven)
 5. Implement DISPLAY operation to traverse the list from 'head' to NULL, printing each node's data.
 6. Provide a menu-driven loop in main() to insert, delete, display and exit.
 ===================================================================
- */
+SOURCE CODE: Singly Linked List Operations (Menu-driven)
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

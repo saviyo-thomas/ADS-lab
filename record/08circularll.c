@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 19/07/2026
@@ -19,7 +19,8 @@ ALGORITHM: Circular Doubly Linked List Operations
  c. Otherwise, bypass node via prev->next and next->prev, update head if needed, and free memory.
 6. Implement DISPLAY operation by traversing starting from 'head' and stopping when we loop back to 'head'.
 ===================================================================
- */
+SOURCE CODE: Circular Doubly Linked List Operations
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

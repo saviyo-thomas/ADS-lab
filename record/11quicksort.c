@@ -20,7 +20,8 @@ ALGORITHM: Quick Sort Implementation
   - Recursively call QUICKSORT on right sub-array (pi + 1 to high).
 3. In main(), read input array, call QUICKSORT, and print sorted array.
 ===================================================================
- */
+SOURCE CODE: Quick Sort Implementation
+*/
 
 #include <stdio.h>
 #define size 10

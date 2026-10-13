@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 15/07/2026
@@ -18,12 +18,12 @@ ALGORITHM: Queue Implementation using Singly Linked List
  c. If 'front' becomes NULL, set 'rear' to NULL.
 5. Provide a menu-driven interface in main() to enqueue, dequeue and exit.
 ===================================================================
- */
+SOURCE CODE: Queue Implementation using Singly Linked List
+*/
 
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
-#include<unistd.h>
 
 typedef struct node{
   int data;
@@ -74,12 +74,10 @@ int main(){
         break;
       case 2: 
         dq();
-        usleep(500000);
         break;
       case 3: return 0;
       default:
               printf("\nEnter a valid input...");
-              usleep(500000);
     }}
   return 0;
 }

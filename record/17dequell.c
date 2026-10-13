@@ -23,6 +23,7 @@ ALGORITHM: Double Ended Queue (Deque) using Doubly Linked List
 7. Implement GETFRONT, GETREAR, GETSIZE, ISEMPTY and ERASE (repeated deleteFront) helpers.
 8. Provide menu-driven implementation in main() with options 1-10 to insert, delete, query, erase and exit.
 ===================================================================
+SOURCE CODE: Double Ended Queue (Deque) using Doubly Linked List
 */
 
 #include <stdio.h>

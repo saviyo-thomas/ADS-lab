@@ -1,5 +1,5 @@
 /*
-   ===================================================================
+===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 17/09/2026
@@ -23,7 +23,8 @@ ALGORITHM: Priority Queue Implementation
 6. Provide a menu-driven interface in main() to enqueue, dequeue, display and exit.
 
 ===================================================================
- */
+SOURCE CODE: Priority Queue Implementation
+*/
 
 /* 18. Implementation of priority queue */
 #include <stdio.h>

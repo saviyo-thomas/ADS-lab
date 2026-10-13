@@ -17,7 +17,8 @@ ALGORITHM: Infix to Postfix Conversion using Stack
  f. After scan, pop remaining stack contents to postfix and terminate string.
 4. In main(), read infix string, call conversion, and print postfix expression.
 ===================================================================
- */
+SOURCE CODE: Infix to Postfix Conversion using Stack
+*/
 
 //Infix to Postfix conversion using stack (linked list)
 #include<stdio.h>
