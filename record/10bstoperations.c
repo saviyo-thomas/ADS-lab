@@ -12,12 +12,11 @@ ALGORITHM: Binary Search Tree (BST) Operations
  b. If data is less than current node's data, recursively insert in the left subtree.
  c. If data is greater, recursively insert in the right subtree.
 3. Implement SEARCH operation:
- a. If root is NULL or key matches root's data, return root.
- b. If key is smaller, search left subtree; otherwise, search right subtree.
-4. Implement DELETE operation:
- a. If key is smaller/larger, recurse left/right.
- b. If key matches current node: If node has one or zero children, replace it with the non-null child and free node. If node has two children, find inorder successor (smallest in right subtree), replace node's value with successor's, and delete successor.
-5. Implement INORDER Traversal to display sorted elements.
+ a. If root is NULL, report key not found.
+ b. If key matches root's data, report found.
+ c. If key is smaller, search left subtree; otherwise, search right subtree.
+4. Implement INORDER, PREORDER and POSTORDER traversals recursively to display elements.
+5. Provide a menu-driven main() to insert, search, display traversals and exit.
 ===================================================================
  */
 
@@ -147,3 +146,159 @@ int main() {
   }
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 50
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 30
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 70
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 20
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 40
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 60
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 1
+
+   Enter value to insert: 80
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 3
+
+   Inorder Traversal: 20 30 40 50 60 70 80
+
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 4
+
+   Preorder Traversal: 50 30 20 40 70 60 80
+
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 5
+
+   Postorder Traversal: 20 40 30 60 80 70 50
+
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 2
+
+   Enter key: 40
+
+   Key is found
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 2
+
+   Enter key: 100
+
+   Key is not found
+
+   ==== BST Menu =====
+   1. Insertion
+   2. Search
+   3. Inorder Traversal
+   4. Preorder Traversal
+   5. Postorder Traversal
+   6. Exit
+   Enter your choice: 6
+*/
