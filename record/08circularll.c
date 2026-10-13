@@ -5,17 +5,18 @@ ROLL NO: CS11
 DATE: 19/07/2026
 EXPERIMENT NO: 08
 
-ALGORITHM: Circular Singly Linked List Operations
-1. Define a Node structure containing 'data' and 'next' pointer.
+ALGORITHM: Circular Doubly Linked List Operations
+1. Define a Node structure containing 'data', 'next' and 'prev' pointers.
 2. Initialize 'head' pointer to NULL.
-3. Maintain circular property where the last node's 'next' points back to 'head'.
+3. Maintain circular property where head->prev is tail and tail->next is head; single node points to itself.
 4. Implement INSERT operation:
- a. Create node. If list is empty, point its 'next' to itself and set 'head' to it.
- b. Otherwise, insert node and update the last node's 'next' to point to the new 'head'.
-5. Implement DELETE operation:
+ a. At beginning: Create node, link it before head and update head to new node.
+ b. At end: Create node, link it after tail (head->prev).
+ c. After value pos: Traverse circularly to node with data == pos and splice new node after it.
+5. Implement DELETE operation by value:
  a. If list is empty, return.
- b. If single node, free it and set 'head' to NULL.
- c. Otherwise, update the preceding node's 'next' to bypass the deleted node and free memory.
+ b. If single node matches, free it and set 'head' to NULL.
+ c. Otherwise, bypass node via prev->next and next->prev, update head if needed, and free memory.
 6. Implement DISPLAY operation by traversing starting from 'head' and stopping when we loop back to 'head'.
 ===================================================================
  */
@@ -167,3 +168,107 @@ int main() {
     } }
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 5
+   List is empty.
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 1
+   Enter value to insert at beginning: 10
+   Inserted 10 at the beginning.
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 2
+   Enter value to insert at end: 20
+   Inserted 20 at the end.
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 2
+   Enter value to insert at end: 30
+   Inserted 30 at the end.
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 5
+   Circular Linked List: 10 -> 20 -> 30 -> (head)
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 3
+   Enter value to insert: 25
+   Circular Linked List: 10 -> 20 -> 30 -> (head)Enter preceding record: 20
+   Inserted 25 after 20.
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 5
+   Circular Linked List: 10 -> 20 -> 25 -> 30 -> (head)
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 4
+   Enter value to delete: 10
+   Deleted 10 from the list.
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 5
+   Circular Linked List: 20 -> 25 -> 30 -> (head)
+   --- Circular Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 6
+*/
