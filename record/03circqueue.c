@@ -5,20 +5,22 @@ ROLL NO: CS11
 DATE: 06/07/2026
 EXPERIMENT NO: 03
 
-ALGORITHM: Circular Queue Implementation using Array
-1. Define a maximum size MAX for the circular queue.
-2. Initialize an array of size MAX and pointers 'front' and 'rear' to -1.
-3. Implement ENQUEUE operation:
- a. Check if Queue is Full: ((rear + 1) % MAX == front). If yes, display Overflow.
- b. If 'front' is -1, set 'front' to 0.
- c. Update 'rear' as (rear + 1) % MAX and insert the element at queue[rear].
-4. Implement DEQUEUE operation:
- a. Check if Queue is Empty: (front == -1). If yes, display Underflow.
- b. Retrieve/print the element at queue[front].
- c. If front == rear (only one element), reset both 'front' and 'rear' to -1.
- d. Otherwise, update 'front' as (front + 1) % MAX.
-5. Implement DISPLAY operation to traverse from 'front' to 'rear' circularly.
-6. Provide a menu-driven interface in main().
+ALGORITHM: Circular Queue Implementation using Linked List (with Size Limit)
+1. Define a maximum size MAX (5) for the circular queue and a Node structure with 'data' and 'next'.
+2. Initialize 'front' and 'rear' pointers to NULL and 'current_size' to 0.
+3. Implement ISFULL (current_size == MAX) and ISEMPTY (current_size == 0) helpers.
+4. Implement ENQUEUE operation:
+ a. Check if queue is Full using ISFULL. If yes, display Overflow.
+ b. Create new node. If empty, set front = rear = new node and rear->next = front.
+ c. Otherwise, set rear->next = new node, update rear to new node, and rear->next = front to maintain circular link.
+ d. Increment current_size.
+5. Implement DEQUEUE operation:
+ a. Check if queue is Empty using ISEMPTY. If yes, display Underflow.
+ b. Retrieve/print front->data, update front to front->next, update rear->next = front.
+ c. If it was the last node, reset front and rear to NULL.
+ d. Free old node and decrement current_size.
+6. Implement DISPLAY operation to traverse from 'front' for current_size nodes and COUNT to print current_size.
+7. Provide a menu-driven interface in main() to enqueue, dequeue, display, count and exit.
 ===================================================================
  */
 
