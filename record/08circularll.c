@@ -1,5 +1,5 @@
 /*
-===================================================================
+   ===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 19/07/2026
@@ -10,15 +10,15 @@ ALGORITHM: Circular Singly Linked List Operations
 2. Initialize 'head' pointer to NULL.
 3. Maintain circular property where the last node's 'next' points back to 'head'.
 4. Implement INSERT operation:
-   a. Create node. If list is empty, point its 'next' to itself and set 'head' to it.
-   b. Otherwise, insert node and update the last node's 'next' to point to the new 'head'.
+ a. Create node. If list is empty, point its 'next' to itself and set 'head' to it.
+ b. Otherwise, insert node and update the last node's 'next' to point to the new 'head'.
 5. Implement DELETE operation:
-   a. If list is empty, return.
-   b. If single node, free it and set 'head' to NULL.
-   c. Otherwise, update the preceding node's 'next' to bypass the deleted node and free memory.
+ a. If list is empty, return.
+ b. If single node, free it and set 'head' to NULL.
+ c. Otherwise, update the preceding node's 'next' to bypass the deleted node and free memory.
 6. Implement DISPLAY operation by traversing starting from 'head' and stopping when we loop back to 'head'.
 ===================================================================
-*/
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -86,7 +86,7 @@ void insatpos(int val, int pos) {
     }
     temp = temp->next;
   } while (temp != head);
-  
+
   printf("Value %d not found in list.", pos);
 }
 
@@ -113,7 +113,7 @@ void delNode(int val) {
     }
     temp = temp->next;
   } while (temp != head);
-  
+
   printf("Element %d not found in the list.", val);
 }
 
@@ -164,6 +164,6 @@ int main() {
         exit(0);
       default:
         printf("Invalid choice. Please try again.");
-  } }
+    } }
   return 0;
 }

@@ -9,14 +9,14 @@ ALGORITHM: Postfix Expression Evaluation
 1. Initialize an empty stack of size MAX to store operands.
 2. Read the postfix expression character by character from left to right.
 3. For each character:
-   a. If it is an operand (digit), push its numeric value onto stack.
-   b. If it is an operator (e.g., +, -, *, /):
-      - Pop the top two elements (op2 first, then op1).
-      - Perform the corresponding operation (op1 operator op2).
-      - Push the resulting value back onto the stack.
+ a. If it is an operand (digit), push its numeric value onto stack.
+ b. If it is an operator (e.g., +, -, *, /):
+  - Pop the top two elements (op2 first, then op1).
+  - Perform the corresponding operation (op1 operator op2).
+  - Push the resulting value back onto the stack.
 4. When the end of expression is reached, pop the final result from the stack and print it.
 ===================================================================
-*/
+ */
 
 //Infix to Postfix conversion using stack (linked list)
 #include<stdio.h>
@@ -24,8 +24,8 @@ ALGORITHM: Postfix Expression Evaluation
 #include<string.h>
 
 typedef struct node{
-	char d;
-	struct node* next;
+  char d;
+  struct node* next;
 }n;
 
 n* createnode(char d){
@@ -42,15 +42,15 @@ int precedence(char c);
 void infixtopostfix(char* infix, char* postfix);
 
 int main(){
-	char infix[100], postfix[100];
-    
-	printf("\nEnter infix expression :");
-	scanf("%s", infix);
-    
-	infixtopostfix(infix, postfix);
-    
-	printf("Postfix expression :%s\n", postfix);
-	return 0;
+  char infix[100], postfix[100];
+
+  printf("\nEnter infix expression :");
+  scanf("%s", infix);
+
+  infixtopostfix(infix, postfix);
+
+  printf("Postfix expression :%s\n", postfix);
+  return 0;
 }
 
 void push (n** h, char d){
@@ -84,39 +84,25 @@ int precedence(char c){
 void infixtopostfix(char* infix, char* postfix){
   n* head = NULL;
   int i = 0, j = 0;
-  
+
   while(infix[i] != '\0'){
     char c = infix[i];
-    
-    // If the character is an operand, add it to the output string
     if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')){
       postfix[j++] = c;
     }
-    // If the character is '(', push it to the stack
-    else if(c == '('){
-      push(&head, c);
-    }
-    // If the character is ')', pop and output from the stack until '(' is encountered
+    else if(c == '('){ push(&head, c); }
     else if(c == ')'){
       while(head != NULL && peek(&head) != '('){
-        postfix[j++] = pop(&head);
-      }
-      if(head != NULL) pop(&head); // Remove '(' from stack
-    }
-    // An operator is encountered
+        postfix[j++] = pop(&head); }
+      if(head != NULL) pop(&head); }
     else{
       while(head != NULL && precedence(peek(&head)) >= precedence(c)){
         postfix[j++] = pop(&head);
       }
-      push(&head, c);
-    }
+      push(&head, c); }
     i++;
   }
-  
-  // Pop all remaining operators from the stack
-  while(head != NULL){
-    postfix[j++] = pop(&head);
-  }
-  
+
+  while(head != NULL){ postfix[j++] = pop(&head); }
   postfix[j] = '\0';
 }

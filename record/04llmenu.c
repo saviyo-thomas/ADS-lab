@@ -1,5 +1,5 @@
 /*
-===================================================================
+   ===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 13/07/2026
@@ -9,24 +9,24 @@ ALGORITHM: Singly Linked List Operations (Menu-driven)
 1. Define a Node structure containing 'data' and a pointer 'next' to the next node.
 2. Initialize 'head' pointer to NULL.
 3. Implement INSERT operations:
-   a. At the beginning: Create new node, set its next to head, update head to new node.
-   b. At the end: Create new node, traverse to the last node, set its next to new node.
-   c. At a specific position: Traverse to target position, update next pointers to insert node.
+ a. At the beginning: Create new node, set its next to head, update head to new node.
+ b. At the end: Create new node, traverse to the last node, set its next to new node.
+ c. At a specific position: Traverse to target position, update next pointers to insert node.
 4. Implement DELETE operations:
-   a. From beginning: Update head to head->next, free original head.
-   b. From end: Traverse to second-to-last node, free last node, set its next to NULL.
-   c. From position: Traverse to node before target, update its next to skip target, free target.
+ a. From beginning: Update head to head->next, free original head.
+ b. From end: Traverse to second-to-last node, free last node, set its next to NULL.
+ c. From position: Traverse to node before target, update its next to skip target, free target.
 5. Implement DISPLAY operation to traverse the list from 'head' to NULL, printing each node's data.
 6. Provide a menu-driven loop in main().
 ===================================================================
-*/
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
 
 typedef struct Node {
-    int data;
-    struct Node* next;
+  int data;
+  struct Node* next;
 }n;
 
 n* head = NULL;
@@ -66,39 +66,39 @@ void insatpos(int val, int pos) {
 }
 
 void delNode(int val) {
-    if (head == NULL) {
-        printf("List is empty."); return; }
-    n *temp = head, *prev = NULL;
-    if (temp != NULL && temp->data == val) {
-        head = temp->next;
-        free(temp);
-        printf("Deleted %d from the list.", val);
-        return;
-    }
-    while (temp != NULL && temp->data != val) {
-        prev = temp;
-        temp = temp->next;
-    }
-    if (temp == NULL) {
-        printf("Element %d not found in the list.", val); return; }
-    prev->next = temp->next;
+  if (head == NULL) {
+    printf("List is empty."); return; }
+  n *temp = head, *prev = NULL;
+  if (temp != NULL && temp->data == val) {
+    head = temp->next;
     free(temp);
     printf("Deleted %d from the list.", val);
+    return;
+  }
+  while (temp != NULL && temp->data != val) {
+    prev = temp;
+    temp = temp->next;
+  }
+  if (temp == NULL) {
+    printf("Element %d not found in the list.", val); return; }
+  prev->next = temp->next;
+  free(temp);
+  printf("Deleted %d from the list.", val);
 }
 
 void display() {
-    if (head == NULL) {
-       printf("List is empty.");
-        return;
-    }
-    struct Node* temp = head;
-    printf("Linked List: ");
-    printf("\nLinked List: ");
-    while (temp != NULL) {
-        printf("%d -> ", temp->data);
-        temp = temp->next;
-    }
-    printf("NULL");
+  if (head == NULL) {
+    printf("List is empty.");
+    return;
+  }
+  struct Node* temp = head;
+  printf("Linked List: ");
+  printf("\nLinked List: ");
+  while (temp != NULL) {
+    printf("%d -> ", temp->data);
+    temp = temp->next;
+  }
+  printf("NULL");
 }
 
 int main() {
@@ -133,5 +133,5 @@ int main() {
       default:
         printf("Invalid choice. Please try again.");
     }}
-    return 0;
+  return 0;
 }

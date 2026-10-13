@@ -9,17 +9,17 @@ ALGORITHM: Double Ended Queue (Deque) using Doubly Linked List
 1. Define a Node structure with 'prev', 'data', and 'next' pointers.
 2. Initialize 'front' and 'rear' pointers to NULL.
 3. Implement INSERT FRONT:
-   a. Create new node. If empty, front = rear = node.
-   b. Otherwise, node->next = front, front->prev = node, front = node.
+ a. Create new node. If empty, front = rear = node.
+ b. Otherwise, node->next = front, front->prev = node, front = node.
 4. Implement INSERT REAR:
-   a. Create new node. If empty, front = rear = node.
-   b. Otherwise, node->prev = rear, rear->next = node, rear = node.
+ a. Create new node. If empty, front = rear = node.
+ b. Otherwise, node->prev = rear, rear->next = node, rear = node.
 5. Implement DELETE FRONT:
-   a. If empty, print underflow.
-   b. Otherwise, temp = front, front = front->next. If front is NULL, rear = NULL; else front->prev = NULL. Free temp.
+ a. If empty, print underflow.
+ b. Otherwise, temp = front, front = front->next. If front is NULL, rear = NULL; else front->prev = NULL. Free temp.
 6. Implement DELETE REAR:
-   a. If empty, print underflow.
-   b. Otherwise, temp = rear, rear = rear->prev. If rear is NULL, front = NULL; else rear->next = NULL. Free temp.
+ a. If empty, print underflow.
+ b. Otherwise, temp = rear, rear = rear->prev. If rear is NULL, front = NULL; else rear->next = NULL. Free temp.
 7. Provide menu-driven implementation in main().
 ===================================================================
 */
@@ -28,175 +28,175 @@ ALGORITHM: Double Ended Queue (Deque) using Doubly Linked List
 #include <stdlib.h>
 
 typedef struct Node {
-    int data;
-    struct Node *prev, *next;
+  int data;
+  struct Node *prev, *next;
 } n;
 
 typedef struct myDeque {
-    n *front, *rear;
-    int size;
+  n *front, *rear;
+  int size;
 } dq;
 
 dq* createMyDeque() {
-    dq* mq = (dq*)malloc(sizeof(dq));
-    mq->front = mq->rear = NULL;
-    mq->size = 0;
-    return mq;
+  dq* mq = (dq*)malloc(sizeof(dq));
+  mq->front = mq->rear = NULL;
+  mq->size = 0;
+  return mq;
 }
 
 int isEmpty(dq* mq) { 
-    return mq->front == NULL; 
+  return mq->front == NULL; 
 }
 
 int getSize(dq* mq) { 
-    return mq->size; 
+  return mq->size; 
 }
 
 void insertFront(dq* mq, int data) {
-    n* newNode = (n*)malloc(sizeof(n));
-    newNode->data = data;
-    newNode->prev = NULL;
-    newNode->next = mq->front;
+  n* newNode = (n*)malloc(sizeof(n));
+  newNode->data = data;
+  newNode->prev = NULL;
+  newNode->next = mq->front;
 
-    if (isEmpty(mq)) {
-        mq->front = mq->rear = newNode;
-    } else {
-        mq->front->prev = newNode;
-        mq->front = newNode;
-    }
-    mq->size++;
-    printf("Inserted %d at the front.\n", data);
+  if (isEmpty(mq)) {
+    mq->front = mq->rear = newNode;
+  } else {
+    mq->front->prev = newNode;
+    mq->front = newNode;
+  }
+  mq->size++;
+  printf("Inserted %d at the front.\n", data);
 }
 
 void insertRear(dq* mq, int data) {
-    n* nn = (n*)malloc(sizeof(n));
-    nn->data = data;
-    nn->next = NULL;
+  n* nn = (n*)malloc(sizeof(n));
+  nn->data = data;
+  nn->next = NULL;
 
-    if (isEmpty(mq)) {
-        nn->prev = NULL;
-        mq->front = mq->rear = nn;
-    } else {
-        nn->prev = mq->rear;
-        mq->rear->next = nn;
-        mq->rear = nn;
-    }
-    mq->size++;
-    printf("Inserted %d at the rear.\n", data);
+  if (isEmpty(mq)) {
+    nn->prev = NULL;
+    mq->front = mq->rear = nn;
+  } else {
+    nn->prev = mq->rear;
+    mq->rear->next = nn;
+    mq->rear = nn;
+  }
+  mq->size++;
+  printf("Inserted %d at the rear.\n", data);
 }
 
 void deleteFront(dq* mq) {
-    if (isEmpty(mq)) {
-        printf("UnderFlow: Deque is empty!\n");
-        return;
-    }
-    n* temp = mq->front;
-    mq->front = mq->front->next;
-    
-    if (mq->front) {
-        mq->front->prev = NULL;
-    } else {
-        mq->rear = NULL;
-    }
-    
-    printf("Deleted front element: %d\n", temp->data);
-    free(temp);
-    mq->size--;
+  if (isEmpty(mq)) {
+    printf("UnderFlow: Deque is empty!\n");
+    return;
+  }
+  n* temp = mq->front;
+  mq->front = mq->front->next;
+
+  if (mq->front) {
+    mq->front->prev = NULL;
+  } else {
+    mq->rear = NULL;
+  }
+
+  printf("Deleted front element: %d\n", temp->data);
+  free(temp);
+  mq->size--;
 }
 
 void deleteRear(dq* mq) {
-    if (isEmpty(mq)) {
-        printf("UnderFlow: Deque is empty!\n");
-        return;
-    }
-    n* temp = mq->rear;
-    mq->rear = mq->rear->prev;
-    
-    if (mq->rear) {
-        mq->rear->next = NULL;
-    } else {
-        mq->front = NULL;
-    }
-    
-    printf("Deleted rear element: %d\n", temp->data);
-    free(temp);
-    mq->size--;
+  if (isEmpty(mq)) {
+    printf("UnderFlow: Deque is empty!\n");
+    return;
+  }
+  n* temp = mq->rear;
+  mq->rear = mq->rear->prev;
+
+  if (mq->rear) {
+    mq->rear->next = NULL;
+  } else {
+    mq->front = NULL;
+  }
+
+  printf("Deleted rear element: %d\n", temp->data);
+  free(temp);
+  mq->size--;
 }
 
 int getFront(dq* mq) { 
-    return isEmpty(mq) ? -1 : mq->front->data; 
+  return isEmpty(mq) ? -1 : mq->front->data; 
 }
 
 int getRear(dq* mq) { 
-    return isEmpty(mq) ? -1 : mq->rear->data; 
+  return isEmpty(mq) ? -1 : mq->rear->data; 
 }
 
 int main() {
-    dq* mq = createMyDeque();
-    int choice, data;
+  dq* mq = createMyDeque();
+  int choice, data;
 
-    do {
-        printf("\n--- Deque Operations Menu ---\n1. Insert Front\n2. Insert Rear\n3. Delete Front\n4. Delete Rear\n5. Get Front Element\n6. Get Rear Element\n7. Get Current Size\n8. Check if Empty\n9. Erase Deque\n10. Exit\n");
-        printf("Enter your choice (1-10): ");
-        
-        if (scanf("%d", &choice) != 1) {
-            printf("Invalid input. Exiting.\n");
-            break;
+  do {
+    printf("\n--- Deque Operations Menu ---\n1. Insert Front\n2. Insert Rear\n3. Delete Front\n4. Delete Rear\n5. Get Front Element\n6. Get Rear Element\n7. Get Current Size\n8. Check if Empty\n9. Erase Deque\n10. Exit\n");
+    printf("Enter your choice (1-10): ");
+
+    if (scanf("%d", &choice) != 1) {
+      printf("Invalid input. Exiting.\n");
+      break;
+    }
+
+    switch (choice) {
+      case 1:
+        printf("Enter integer value to insert at front: ");
+        scanf("%d", &data);
+        insertFront(mq, data);
+        break;
+      case 2:
+        printf("Enter integer value to insert at rear: ");
+        scanf("%d", &data);
+        insertRear(mq, data);
+        break;
+      case 3:
+        deleteFront(mq);
+        break;
+      case 4:
+        deleteRear(mq);
+        break;
+      case 5:
+        data = getFront(mq);
+        if (data == -1 && isEmpty(mq))
+          printf("Deque is empty!\n");
+        else
+          printf("Front element: %d\n", data);
+        break;
+      case 6:
+        data = getRear(mq);
+        if (data == -1 && isEmpty(mq))
+          printf("Deque is empty!\n");
+        else
+          printf("Rear element: %d\n", data);
+        break;
+      case 7:
+        printf("Current size of deque: %d\n", getSize(mq));
+        break;
+      case 8:
+        if (isEmpty(mq))
+          printf("Yes, the deque is empty.\n");
+        else
+          printf("No, the deque is not empty.\n");
+        break;
+      case 9:
+        while (!isEmpty(mq)) {
+          deleteFront(mq);
         }
+        printf("Deque erased successfully.\n");
+        break;
+      case 10:
+        printf("Exiting program. All memory freed.\n");
+        break;
+      default:
+        printf("Invalid choice! Please select an option between 1 and 10.\n");
+    }
+  } while (choice != 10);
 
-        switch (choice) {
-            case 1:
-                printf("Enter integer value to insert at front: ");
-                scanf("%d", &data);
-                insertFront(mq, data);
-                break;
-            case 2:
-                printf("Enter integer value to insert at rear: ");
-                scanf("%d", &data);
-                insertRear(mq, data);
-                break;
-            case 3:
-                deleteFront(mq);
-                break;
-            case 4:
-                deleteRear(mq);
-                break;
-            case 5:
-                data = getFront(mq);
-                if (data == -1 && isEmpty(mq))
-                    printf("Deque is empty!\n");
-                else
-                    printf("Front element: %d\n", data);
-                break;
-            case 6:
-                data = getRear(mq);
-                if (data == -1 && isEmpty(mq))
-                    printf("Deque is empty!\n");
-                else
-                    printf("Rear element: %d\n", data);
-                break;
-            case 7:
-                printf("Current size of deque: %d\n", getSize(mq));
-                break;
-            case 8:
-                if (isEmpty(mq))
-                    printf("Yes, the deque is empty.\n");
-                else
-                    printf("No, the deque is not empty.\n");
-                break;
-            case 9:
-                while (!isEmpty(mq)) {
-                    deleteFront(mq);
-                }
-                printf("Deque erased successfully.\n");
-                break;
-            case 10:
-                printf("Exiting program. All memory freed.\n");
-                break;
-            default:
-                printf("Invalid choice! Please select an option between 1 and 10.\n");
-        }
-    } while (choice != 10);
-
-    return 0;
+  return 0;
 }

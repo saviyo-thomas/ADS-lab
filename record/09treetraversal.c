@@ -1,5 +1,5 @@
 /*
-===================================================================
+   ===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 29/07/2026
@@ -8,23 +8,23 @@ EXPERIMENT NO: 09
 ALGORITHM: Binary Tree Traversals (Preorder, Inorder, Postorder)
 1. Define a Node structure representing a binary tree node with 'data', 'left' pointer, and 'right' pointer.
 2. Implement INORDER Traversal (Left, Root, Right):
-   a. If node is NULL, return.
-   b. Recursively call Inorder on left subtree.
-   c. Process/print root node data.
-   d. Recursively call Inorder on right subtree.
+ a. If node is NULL, return.
+ b. Recursively call Inorder on left subtree.
+ c. Process/print root node data.
+ d. Recursively call Inorder on right subtree.
 3. Implement PREORDER Traversal (Root, Left, Right):
-   a. If node is NULL, return.
-   b. Process/print root node data.
-   c. Recursively call Preorder on left subtree.
-   d. Recursively call Preorder on right subtree.
+ a. If node is NULL, return.
+ b. Process/print root node data.
+ c. Recursively call Preorder on left subtree.
+ d. Recursively call Preorder on right subtree.
 4. Implement POSTORDER Traversal (Left, Right, Root):
-   a. If node is NULL, return.
-   b. Recursively call Postorder on left subtree.
-   c. Recursively call Postorder on right subtree.
-   d. Process/print root node data.
+ a. If node is NULL, return.
+ b. Recursively call Postorder on left subtree.
+ c. Recursively call Postorder on right subtree.
+ d. Process/print root node data.
 5. Provide a driver main() to build a sample binary tree and execute traversals.
 ===================================================================
-*/
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,12 +53,12 @@ n* del(n* h, int d) {
   if (h == NULL) { printf("\nData not found"); return h; }
   if (d < h->data) { h->lc = del(h->lc, d); }
   else if (d > h->data) { h->rc = del(h->rc, d); }
-  
+
   //node found
   else {
     if (h->lc == NULL) { n* temp = h->rc; free(h); return temp;}
     else if (h->rc == NULL) { n* temp = h->lc; free(h); return temp;}
-    
+
     n* temp = h->rc;
     while (temp->lc != NULL) { temp = temp->lc; }
     h->data = temp->data;
@@ -98,7 +98,7 @@ void postord(n*h){
 int main() {
   n* hd = NULL;
   int ch, data;
-  
+
   while (1) {
     printf("\n\n========Tree=======\n1.Insert\n2.Delete\n3.Search\n4.Display\n5.Exit\nChoice: ");
     if(scanf("%d", &ch) != 1) break; 

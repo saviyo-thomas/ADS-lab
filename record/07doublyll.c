@@ -1,5 +1,5 @@
 /*
-===================================================================
+   ===================================================================
 NAME: Saviyo Thomas
 ROLL NO: CS11
 DATE: 16/07/2026
@@ -13,7 +13,7 @@ ALGORITHM: Doubly Linked List Operations
 5. Implement DISPLAY operations (forward traversal using 'next' and backward traversal using 'prev' pointers).
 6. Provide a menu-driven driver program in main().
 ===================================================================
-*/
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -81,47 +81,47 @@ void insatpos(int val, int pos) {
 }
 
 void delNode(int val) {
-    if (head == NULL) {
-        printf("\nList is empty.");
-        return;
+  if (head == NULL) {
+    printf("\nList is empty.");
+    return;
+  }
+  n *temp = head;
+  while (temp != NULL && temp->data != val) {
+    temp = temp->next;
+  }
+  if (temp == NULL) {
+    printf("\nElement %d not found in the list.", val);
+    return;
+  }
+  if (temp == head) {
+    head = temp->next;
+    if (head != NULL) {
+      head->prev = NULL;
     }
-    n *temp = head;
-    while (temp != NULL && temp->data != val) {
-        temp = temp->next;
+  } else {
+    if (temp->prev != NULL) {
+      temp->prev->next = temp->next;
     }
-    if (temp == NULL) {
-        printf("\nElement %d not found in the list.", val);
-        return;
+    if (temp->next != NULL) {
+      temp->next->prev = temp->prev;
     }
-    if (temp == head) {
-        head = temp->next;
-        if (head != NULL) {
-            head->prev = NULL;
-        }
-    } else {
-        if (temp->prev != NULL) {
-            temp->prev->next = temp->next;
-        }
-        if (temp->next != NULL) {
-            temp->next->prev = temp->prev;
-        }
-    }
-    free(temp);
-    printf("\nDeleted %d from the list.", val);
+  }
+  free(temp);
+  printf("\nDeleted %d from the list.", val);
 }
 
 void display() {
-    if (head == NULL) {
-        printf("\nList is empty.");
-        return;
-    }
-    n* temp = head;
-    printf("\nLinked List: ");
-    while (temp != NULL) {
-        printf("%d -> ", temp->data);
-        temp = temp->next;
-    }
-    printf("NULL\n");
+  if (head == NULL) {
+    printf("\nList is empty.");
+    return;
+  }
+  n* temp = head;
+  printf("\nLinked List: ");
+  while (temp != NULL) {
+    printf("%d -> ", temp->data);
+    temp = temp->next;
+  }
+  printf("NULL\n");
 }
 
 int main() {

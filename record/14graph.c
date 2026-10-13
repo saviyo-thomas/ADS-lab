@@ -8,19 +8,19 @@ EXPERIMENT NO: 14
 ALGORITHM: Graph Representation and Traversals (BFS & DFS)
 1. Represent graph using Adjacency Matrix or Adjacency List.
 2. Implement BREADTH FIRST SEARCH (BFS):
-   a. Initialize an empty queue and a 'visited' array of size V to 0.
-   b. Mark starting vertex as visited and enqueue it.
-   c. While queue is not empty:
-      - Dequeue vertex 'u', print/process it.
-      - For each unvisited neighbor 'v' of 'u', mark 'v' as visited and enqueue 'v'.
+ a. Initialize an empty queue and a 'visited' array of size V to 0.
+ b. Mark starting vertex as visited and enqueue it.
+c. While queue is not empty:
+ - Dequeue vertex 'u', print/process it.
+ - For each unvisited neighbor 'v' of 'u', mark 'v' as visited and enqueue 'v'.
 3. Implement DEPTH FIRST SEARCH (DFS):
-   a. Create a 'visited' array initialized to 0.
-   b. Call recursive DFS_Util helper:
-      - Mark current vertex as visited, print it.
-      - For each unvisited neighbor, recursively call DFS_Util on that neighbor.
+ a. Create a 'visited' array initialized to 0.
+ b. Call recursive DFS_Util helper:
+  - Mark current vertex as visited, print it.
+  - For each unvisited neighbor, recursively call DFS_Util on that neighbor.
 4. In main(), build graph and execute BFS and DFS traversals.
 ===================================================================
-*/
+ */
 
 /* 14. Implementation of graphs and graph traversals (BFS & DFS) */
 #include <stdio.h>
@@ -29,86 +29,86 @@ ALGORITHM: Graph Representation and Traversals (BFS & DFS)
 #define MAX 100
 
 struct Graph {
-    int vertices;
-    int adj[MAX][MAX];
+  int vertices;
+  int adj[MAX][MAX];
 };
 
 void initGraph(struct Graph* g, int vertices) {
-    g->vertices = vertices;
-    for (int i = 0; i < vertices; i++) {
-        for (int j = 0; j < vertices; j++) {
-            g->adj[i][j] = 0;
-        }
+  g->vertices = vertices;
+  for (int i = 0; i < vertices; i++) {
+    for (int j = 0; j < vertices; j++) {
+      g->adj[i][j] = 0;
     }
+  }
 }
 
 void addEdge(struct Graph* g, int src, int dest) {
-    g->adj[src][dest] = 1;
-    g->adj[dest][src] = 1; // For undirected graph
+  g->adj[src][dest] = 1;
+  g->adj[dest][src] = 1; // For undirected graph
 }
 
 void BFS(struct Graph* g, int startVertex) {
-    int visited[MAX] = {0};
-    int queue[MAX], front = 0, rear = 0;
+  int visited[MAX] = {0};
+  int queue[MAX], front = 0, rear = 0;
 
-    visited[startVertex] = 1;
-    queue[rear++] = startVertex;
+  visited[startVertex] = 1;
+  queue[rear++] = startVertex;
 
-    printf("BFS Traversal: ");
-    while (front < rear) {
-        int currentVertex = queue[front++];
-        printf("%d ", currentVertex);
+  printf("BFS Traversal: ");
+  while (front < rear) {
+    int currentVertex = queue[front++];
+    printf("%d ", currentVertex);
 
-        for (int i = 0; i < g->vertices; i++) {
-            if (g->adj[currentVertex][i] == 1 && !visited[i]) {
-                visited[i] = 1;
-                queue[rear++] = i;
-            }
-        }
+    for (int i = 0; i < g->vertices; i++) {
+      if (g->adj[currentVertex][i] == 1 && !visited[i]) {
+        visited[i] = 1;
+        queue[rear++] = i;
+      }
     }
-    printf("\n");
+  }
+  printf("\n");
 }
 
 void DFSUtil(struct Graph* g, int vertex, int visited[]) {
-    visited[vertex] = 1;
-    printf("%d ", vertex);
+  visited[vertex] = 1;
+  printf("%d ", vertex);
 
-    for (int i = 0; i < g->vertices; i++) {
-        if (g->adj[vertex][i] == 1 && !visited[i]) {
-            DFSUtil(g, i, visited);
-        }
+  for (int i = 0; i < g->vertices; i++) {
+    if (g->adj[vertex][i] == 1 && !visited[i]) {
+      DFSUtil(g, i, visited);
     }
+  }
 }
 
 void DFS(struct Graph* g, int startVertex) {
-    int visited[MAX] = {0};
-    printf("DFS Traversal: ");
-    DFSUtil(g, startVertex, visited);
-    printf("\n");
+  int visited[MAX] = {0};
+  printf("DFS Traversal: ");
+  DFSUtil(g, startVertex, visited);
+  printf("\n");
 }
 
 int main() {
-    struct Graph g;
-    int vertices, edges, src, dest, start;
+  struct Graph g;
+  int vertices, edges, src, dest, start;
 
-    printf("Enter number of vertices: ");
-    if (scanf("%d", &vertices) != 1) return 0;
-    initGraph(&g, vertices);
+  printf("Enter number of vertices: ");
+  if (scanf("%d", &vertices) != 1) return 0;
+  initGraph(&g, vertices);
 
-    printf("Enter number of edges: ");
-    if (scanf("%d", &edges) != 1) return 0;
+  printf("Enter number of edges: ");
+  if (scanf("%d", &edges) != 1) return 0;
 
-    for (int i = 0; i < edges; i++) {
-        printf("Enter edge (source destination): ");
-        scanf("%d %d", &src, &dest);
-        addEdge(&g, src, dest);
-    }
+  for (int i = 0; i < edges; i++) {
+    printf("Enter edge (source destination): ");
+    scanf("%d %d", &src, &dest);
+    addEdge(&g, src, dest);
+  }
 
-    printf("Enter start vertex for traversal: ");
-    if (scanf("%d", &start) != 1) return 0;
+  printf("Enter start vertex for traversal: ");
+  if (scanf("%d", &start) != 1) return 0;
 
-    BFS(&g, start);
-    DFS(&g, start);
+  BFS(&g, start);
+  DFS(&g, start);
 
-    return 0;
+  return 0;
 }
