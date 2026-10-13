@@ -5,16 +5,17 @@ ROLL NO: CS11
 DATE: 06/08/2026
 EXPERIMENT NO: 13
 
-ALGORITHM: Postfix Expression Evaluation
-1. Initialize an empty stack of size MAX to store operands.
-2. Read the postfix expression character by character from left to right.
-3. For each character:
- a. If it is an operand (digit), push its numeric value onto stack.
- b. If it is an operator (e.g., +, -, *, /):
-  - Pop the top two elements (op2 first, then op1).
-  - Perform the corresponding operation (op1 operator op2).
-  - Push the resulting value back onto the stack.
-4. When the end of expression is reached, pop the final result from the stack and print it.
+ALGORITHM: Infix to Postfix Conversion using Stack
+1. Define a Node structure with 'data' (char) and 'next' for stack, with push, pop and peek.
+2. Define PRECEDENCE function: '^' = 3, '*'/'/' = 2, '+'/'-' = 1, else -1.
+3. Implement INFIXTOPOSTFIX function:
+ a. Scan infix string left to right.
+ b. If operand (alphanumeric), append to postfix.
+ c. If '(' push onto stack.
+ d. If ')' pop and append until '(' is found, then discard '('.
+ e. If operator, pop and append while stack top has >= precedence, then push current operator.
+ f. After scan, pop remaining stack contents to postfix and terminate string.
+4. In main(), read infix string, call conversion, and print postfix expression.
 ===================================================================
  */
 
@@ -106,3 +107,14 @@ void infixtopostfix(char* infix, char* postfix){
   while(head != NULL){ postfix[j++] = pop(&head); }
   postfix[j] = '\0';
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   Enter infix expression :(a+b)*c-d/e
+   Postfix expression :ab+c*de/-
+*/
