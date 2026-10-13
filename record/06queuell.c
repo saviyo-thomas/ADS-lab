@@ -7,19 +7,16 @@ EXPERIMENT NO: 06
 
 ALGORITHM: Queue Implementation using Singly Linked List
 1. Define a Node structure with 'data' and a 'next' pointer.
-2. Initialize 'front' and 'rear' pointers to NULL.
+2. Initialize 'front' (h) and 'rear' (t) pointers to NULL.
 3. Implement ENQUEUE operation:
  a. Create a new node with data.
- b. If queue is empty (rear == NULL), set both 'front' and 'rear' to the new node.
+ b. If queue is empty (front == NULL), set both 'front' and 'rear' to the new node.
  c. Otherwise, set rear->next = new_node and update 'rear' to new_node.
 4. Implement DEQUEUE operation:
- a. Check if 'front' is NULL (Queue Underflow). If yes, return.
- b. Store front node in a temporary pointer.
- c. Update 'front' to front->next.
- d. If 'front' becomes NULL, set 'rear' to NULL.
- e. Free the temporary node and retrieve its data.
-5. Implement DISPLAY operation by traversing from 'front' to NULL.
- 6. Provide a menu-driven interface in main().
+ a. Check if 'front' is NULL (Queue empty). If yes, return.
+ b. Print front->data, update 'front' to front->next.
+ c. If 'front' becomes NULL, set 'rear' to NULL.
+5. Provide a menu-driven interface in main() to enqueue, dequeue and exit.
 ===================================================================
  */
 
@@ -86,3 +83,56 @@ int main(){
     }}
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :2
+   Queue is empty
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :1
+   Enter data:10
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :1
+   Enter data:20
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :1
+   Enter data:30
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :2
+   10 is dequeued
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :2
+   20 is dequeued
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :2
+   30 is dequeued
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :2
+   Queue is empty
+   1.Enqueue
+   2.Dequeue
+   3.Exit
+   Enter your choice :3
+*/
