@@ -84,3 +84,18 @@ int main() {
   free(arr);
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   Enter the number of elements: 8
+   Enter 8 elements:
+   64 34 25 12 22 11 90 5
+
+   Sorted array:
+   5 11 12 22 25 34 64 90
+*/
