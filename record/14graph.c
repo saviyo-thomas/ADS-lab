@@ -112,3 +112,21 @@ int main() {
 
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   Enter number of vertices: 4
+   Enter number of edges: 4
+   Enter edge (source destination): 0 1
+   Enter edge (source destination): 0 2
+   Enter edge (source destination): 1 3
+   Enter edge (source destination): 2 3
+   Enter start vertex for traversal: 0
+   BFS Traversal: 0 1 2 3
+   DFS Traversal: 0 1 3 2
+*/
