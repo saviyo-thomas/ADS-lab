@@ -30,75 +30,129 @@ struct Item {
 };
 
 struct Item pq[MAX];
-int size = -1;
+int size = 0;
+
+void swap(struct Item *a, struct Item *b) {
+    struct Item temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int higherPriority(struct Item a, struct Item b) {
+    if (a.priority == b.priority)
+        return a.data > b.data;
+
+    return a.priority > b.priority;
+}
 
 void enqueue(int data, int priority) {
-    if (size >= MAX - 1) {
+    if (size == MAX) {
         printf("Priority Queue Overflow!\n");
         return;
     }
+
+    int i = size;
+
+    pq[i].data = data;
+    pq[i].priority = priority;
     size++;
-    pq[size].data = data;
-    pq[size].priority = priority;
-}
 
-int peek() {
-    int highestPriority = -1089203;
-    int ind = -1;
+    while (i > 0) {
+        int parent = (i - 1) / 2;
 
-    for (int i = 0; i <= size; i++) {
-        if (highestPriority == pq[i].priority && ind > -1 && pq[ind].data < pq[i].data) {
-            highestPriority = pq[i].priority;
-            ind = i;
-        } else if (pq[i].priority > highestPriority) {
-            highestPriority = pq[i].priority;
-            ind = i;
+        if (higherPriority(pq[i], pq[parent])) {
+            swap(&pq[i], &pq[parent]);
+            i = parent;
+        } else {
+            break;
         }
     }
-    return ind;
 }
 
 void dequeue() {
-    if (size < 0) {
+    if (size == 0) {
         printf("Priority Queue Underflow!\n");
         return;
     }
-    int ind = peek();
-    for (int i = ind; i < size; i++) {
-        pq[i] = pq[i + 1];
-    }
+
+    printf("Deleted element: %d\n", pq[0].data);
+
+    pq[0] = pq[size - 1];
     size--;
+
+    int i = 0;
+
+    while (1) {
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        int largest = i;
+
+        if (left < size &&
+            higherPriority(pq[left], pq[largest])) {
+            largest = left;
+        }
+
+        if (right < size &&
+            higherPriority(pq[right], pq[largest])) {
+            largest = right;
+        }
+
+        if (largest != i) {
+            swap(&pq[i], &pq[largest]);
+            i = largest;
+        } else {
+            break;
+        }
+    }
 }
 
 void display() {
-    for (int i = 0; i <= size; i++) {
-        printf("Value: %d, Priority: %d\n", pq[i].data, pq[i].priority);
+    if (size == 0) {
+        printf("Priority Queue is empty!\n");
+        return;
+    }
+
+    printf("Value\tPriority\n");
+
+    for (int i = 0; i < size; i++) {
+        printf("%d\t%d\n", pq[i].data, pq[i].priority);
     }
 }
 
 int main() {
     int choice, val, pri;
+
     while (1) {
-        printf("\n1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\nEnter choice: ");
-        if (scanf("%d", &choice) != 1) break;
+        printf("\n1. Enqueue\n2. Dequeue\n");
+        printf("3. Display\n4. Exit\n");
+        printf("Enter choice: ");
+
+        if (scanf("%d", &choice) != 1)
+            break;
 
         switch (choice) {
             case 1:
                 printf("Enter value and priority: ");
-                scanf("%d %d", &val, &pri);
+                if (scanf("%d %d", &val, &pri) != 2)
+                    return 0;
                 enqueue(val, pri);
                 break;
+
             case 2:
                 dequeue();
                 break;
+
             case 3:
                 display();
                 break;
+
             case 4:
                 return 0;
+
             default:
                 printf("Invalid choice!\n");
         }
     }
+
     return 0;
 }
