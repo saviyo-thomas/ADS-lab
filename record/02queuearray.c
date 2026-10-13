@@ -16,8 +16,8 @@ ALGORITHM: Linear Queue Implementation using Array
  a. Check if 'front' is -1 or greater than 'rear' (Queue Underflow). If yes, return.
  b. Otherwise, print/retrieve queue[front] and increment 'front'.
  c. If 'front' exceeds 'rear', reset both 'front' and 'rear' to -1.
-5. Implement DISPLAY operation to traverse from 'front' to 'rear'.
-6. Provide a menu-driven program in main() to allow users to enqueue, dequeue, and display.
+5. Implement DISPLAY and COUNT operations to traverse from 'front' to 'rear' and print (rear-front+1).
+6. Provide a menu-driven program in main() to allow users to enqueue, dequeue, display, count and exit.
 ===================================================================
  */
 
