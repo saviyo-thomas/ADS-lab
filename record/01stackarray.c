@@ -14,7 +14,7 @@ ALGORITHM: Stack Implementation using Array
 4. Implement POP operation:
  a. Check if 'top' equals -1 (Stack Underflow). If yes, return.
  b. Otherwise, print/retrieve the element at stack[top] and decrement 'top'.
-5. Implement PEEK/DISPLAY operations to look at the top element or traverse from top to 0.
+5. Implement PEEK operation to look at the top element.
 6. Provide a menu-driven interface in main() to continuously run these operations until the user exits.
 ===================================================================
  */
@@ -66,6 +66,93 @@ int main(){
 
 
 /*
-===================================================================
-OUTPUT
+   ===================================================================
 
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :2
+   !!Stack underflow!!
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :1
+   Enter data :10
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :1
+   Enter data :20
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :1
+   Enter data :30
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :3
+   30 is at top
+
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :2
+   30 popped
+
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :2
+   20 popped
+
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :1
+   Enter data :40
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :3
+   40 is at top
+
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :2
+   40 popped
+
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :2
+   10 popped
+
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :2
+   !!Stack underflow!!
+   1.Push
+   2.pop
+   3.peep
+   4.exit
+    Enter Choice :4
+*/
