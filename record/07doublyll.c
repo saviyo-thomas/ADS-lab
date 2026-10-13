@@ -8,10 +8,10 @@ EXPERIMENT NO: 07
 ALGORITHM: Doubly Linked List Operations
 1. Define a Node structure containing 'data', a 'prev' pointer, and a 'next' pointer.
 2. Initialize 'head' pointer to NULL.
-3. Implement INSERT operations (beginning, end, position) by updating 'prev' and 'next' pointers of adjacent nodes.
-4. Implement DELETE operations (beginning, end, position) by adjusting 'prev' and 'next' of surrounding nodes and freeing memory.
-5. Implement DISPLAY operations (forward traversal using 'next' and backward traversal using 'prev' pointers).
-6. Provide a menu-driven driver program in main().
+3. Implement INSERT operations (beginning, end, after value) by updating 'prev' and 'next' pointers of adjacent nodes.
+4. Implement DELETE operation by value by adjusting 'prev' and 'next' of surrounding nodes and freeing memory.
+5. Implement DISPLAY operation by forward traversal from 'head' using 'next' pointers.
+6. Provide a menu-driven driver program in main() to insert, delete, display and exit.
 ===================================================================
  */
 
@@ -161,3 +161,121 @@ int main() {
   }
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 5
+
+   List is empty.
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 1
+   Enter value to insert at beginning: 10
+
+   Inserted 10 at the beginning.
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 2
+   Enter value to insert at end: 20
+
+   Inserted 20 at the end.
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 2
+   Enter value to insert at end: 30
+
+   Inserted 30 at the end.
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 5
+
+   Linked List: 10 -> 20 -> 30 -> NULL
+
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 3
+   Enter value to insert: 25
+
+   Linked List: 10 -> 20 -> 30 -> NULL
+   Enter preceding record: 20
+
+   Inserted 25 after 20.
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 5
+
+   Linked List: 10 -> 20 -> 25 -> 30 -> NULL
+
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 4
+   Enter value to delete: 10
+
+   Deleted 10 from the list.
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 5
+
+   Linked List: 20 -> 25 -> 30 -> NULL
+
+   --- Linked List Operations Menu ---
+   1. Insert at Beginning
+   2. Insert at End
+   3. Insert In Between (at Position)
+   4. Delete a Node
+   5. Display
+   6. Exit
+   Enter your choice: 6
+*/
