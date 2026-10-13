@@ -6,21 +6,22 @@ DATE: 15/09/2026
 EXPERIMENT NO: 17
 
 ALGORITHM: Double Ended Queue (Deque) using Doubly Linked List
-1. Define a Node structure with 'prev', 'data', and 'next' pointers.
-2. Initialize 'front' and 'rear' pointers to NULL.
+1. Define a Node structure with 'prev', 'data', and 'next' pointers, and Deque with 'front', 'rear' and 'size'.
+2. Initialize 'front' and 'rear' to NULL and size to 0.
 3. Implement INSERT FRONT:
  a. Create new node. If empty, front = rear = node.
- b. Otherwise, node->next = front, front->prev = node, front = node.
+ b. Otherwise, node->next = front, front->prev = node, front = node. Increment size.
 4. Implement INSERT REAR:
  a. Create new node. If empty, front = rear = node.
- b. Otherwise, node->prev = rear, rear->next = node, rear = node.
+ b. Otherwise, node->prev = rear, rear->next = node, rear = node. Increment size.
 5. Implement DELETE FRONT:
  a. If empty, print underflow.
- b. Otherwise, temp = front, front = front->next. If front is NULL, rear = NULL; else front->prev = NULL. Free temp.
+ b. Otherwise, temp = front, front = front->next. If front is NULL, rear = NULL; else front->prev = NULL. Free temp and decrement size.
 6. Implement DELETE REAR:
  a. If empty, print underflow.
- b. Otherwise, temp = rear, rear = rear->prev. If rear is NULL, front = NULL; else rear->next = NULL. Free temp.
-7. Provide menu-driven implementation in main().
+ b. Otherwise, temp = rear, rear = rear->prev. If rear is NULL, front = NULL; else rear->next = NULL. Free temp and decrement size.
+7. Implement GETFRONT, GETREAR, GETSIZE, ISEMPTY and ERASE (repeated deleteFront) helpers.
+8. Provide menu-driven implementation in main() with options 1-10 to insert, delete, query, erase and exit.
 ===================================================================
 */
 
@@ -200,3 +201,211 @@ int main() {
 
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 8
+   Yes, the deque is empty.
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 3
+   UnderFlow: Deque is empty!
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 1
+   Enter integer value to insert at front: 10
+   Inserted 10 at the front.
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 2
+   Enter integer value to insert at rear: 20
+   Inserted 20 at the rear.
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 1
+   Enter integer value to insert at front: 5
+   Inserted 5 at the front.
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 7
+   Current size of deque: 3
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 5
+   Front element: 5
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 6
+   Rear element: 20
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 3
+   Deleted front element: 5
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 4
+   Deleted rear element: 20
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 7
+   Current size of deque: 1
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 9
+   Deleted front element: 10
+   Deque erased successfully.
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 8
+   Yes, the deque is empty.
+
+   --- Deque Operations Menu ---
+   1. Insert Front
+   2. Insert Rear
+   3. Delete Front
+   4. Delete Rear
+   5. Get Front Element
+   6. Get Rear Element
+   7. Get Current Size
+   8. Check if Empty
+   9. Erase Deque
+   10. Exit
+   Enter your choice (1-10): 10
+   Exiting program. All memory freed.
+*/
