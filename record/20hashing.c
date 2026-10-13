@@ -5,19 +5,17 @@ ROLL NO: CS11
 DATE: 26/09/2026
 EXPERIMENT NO: 20
 
-ALGORITHM: Hash Table with Collision Resolution (e.g., Linear Probing)
-1. Define Hash Table of size HASH_SIZE and initialize all slots to -1 (indicating empty).
-2. Define Hash Function: h(key) = key % HASH_SIZE.
-3. Implement INSERT operation:
+ALGORITHM: Hash Table with Separate Chaining
+1. Define TABLE_SIZE (10) and a Node structure with integer 'data' and 'next' pointer.
+2. Initialize hashTable[0..TABLE_SIZE-1] to NULL.
+3. Define Hash Function: h(key) = key % TABLE_SIZE.
+4. Implement INSERT operation:
  a. Calculate index = h(key).
- b. If table[index] is empty, insert key.
- c. If collision occurs (table[index] is occupied):
-  - Use Linear Probing: index = (index + 1) % HASH_SIZE.
-  - Repeat until an empty slot is found or table is fully scanned.
-4. Implement SEARCH operation:
- a. Calculate index = h(key).
- b. Probe sequentially until key is found or an empty slot (-1) is reached.
-5. Provide display function and driver program in main().
+ b. Create new node with key.
+ c. If hashTable[index] is NULL, make it the head.
+ d. Else (collision), traverse to end of chain and append new node.
+5. Implement DISPLAY operation to print each index chain ending with NULL.
+6. Provide driver program in main() to insert, display and exit.
 ===================================================================
  */
 
@@ -99,3 +97,66 @@ int main() {
   }
   return 0;
 }
+
+/*
+   ===================================================================
+
+   OUTPUT
+
+   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
+
+   1. Insert
+   2. Display
+   3. Exit
+   Enter choice: 1
+   Enter value to insert: 15
+   Inserted 15 at index 5
+
+   1. Insert
+   2. Display
+   3. Exit
+   Enter choice: 1
+   Enter value to insert: 25
+   Inserted 25 at index 5
+
+   1. Insert
+   2. Display
+   3. Exit
+   Enter choice: 1
+   Enter value to insert: 35
+   Inserted 35 at index 5
+
+   1. Insert
+   2. Display
+   3. Exit
+   Enter choice: 1
+   Enter value to insert: 12
+   Inserted 12 at index 2
+
+   1. Insert
+   2. Display
+   3. Exit
+   Enter choice: 1
+   Enter value to insert: 22
+   Inserted 22 at index 2
+
+   1. Insert
+   2. Display
+   3. Exit
+   Enter choice: 2
+   Index 0: NULL
+   Index 1: NULL
+   Index 2: 12 -> 22 -> NULL
+   Index 3: NULL
+   Index 4: NULL
+   Index 5: 15 -> 25 -> 35 -> NULL
+   Index 6: NULL
+   Index 7: NULL
+   Index 8: NULL
+   Index 9: NULL
+
+   1. Insert
+   2. Display
+   3. Exit
+   Enter choice: 3
+*/
