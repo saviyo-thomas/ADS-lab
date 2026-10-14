@@ -1,190 +1,198 @@
-/*
-===================================================================
-NAME: Saviyo Thomas
-ROLL NO: CS11
-DATE: 09/09/2026
-EXPERIMENT NO: 16
-
-ALGORITHM: Huffman Coding (Greedy prefix coding)
-1. Create a leaf node for each unique character containing its frequency.
-2. Build a Min-Priority Queue of all leaf nodes.
-3. While there is more than one node in the queue:
- a. Extract the two nodes with the lowest frequency from min-heap (let them be left and right).
- b. Create a new internal node with frequency equal to sum of left and right frequencies.
- c. Set its left child to 'left' and right child to 'right'.
- d. Insert this new node back into the min-priority queue.
-4. The remaining node in priority queue is the Root of the Huffman Tree.
-5. Traverse the Huffman Tree from root, appending '0' for left branch and '1' for right branch to assign codes.
-===================================================================
-SOURCE CODE: Huffman Coding Implementation
-*/
-
-/* 16. Implementation of Huffman algorithm */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_TREE_HT 100
+#define MAX_STR_LEN 1000
+#define ASCII_SIZE 256
 
-struct MinTreeNode {
-  char data;
-  unsigned frequency;
-  struct MinTreeNode *left, *right;
+struct MinHeapNode {
+    char data;
+    unsigned freq;
+    struct MinHeapNode *left, *right;
 };
 
 struct MinHeap {
-  unsigned size;
-  unsigned capacity;
-  struct MinTreeNode** array;
+    unsigned size;
+    unsigned capacity;
+    struct MinHeapNode** array;
 };
 
-struct MinTreeNode* createNode(char data, unsigned frequency) {
-  struct MinTreeNode* node = (struct MinTreeNode*)malloc(sizeof(struct MinTreeNode));
-  node->left = node->right = NULL;
-  node->data = data;
-  node->frequency = frequency;
-  return node;
+struct MinHeapNode* newNode(char data, unsigned freq) {
+    struct MinHeapNode* temp = (struct MinHeapNode*)malloc(sizeof(struct MinHeapNode));
+    temp->left = temp->right = NULL;
+    temp->data = data;
+    temp->freq = freq;
+    return temp;
 }
 
 struct MinHeap* createMinHeap(unsigned capacity) {
-  struct MinHeap* minHeap = (struct MinHeap*)malloc(sizeof(struct MinHeap));
-  minHeap->size = 0;
-  minHeap->capacity = capacity;
-  minHeap->array = (struct MinTreeNode**)malloc(minHeap->capacity * sizeof(struct MinTreeNode*));
-  return minHeap;
+    struct MinHeap* minHeap = (struct MinHeap*)malloc(sizeof(struct MinHeap));
+    minHeap->size = 0;
+    minHeap->capacity = capacity;
+    minHeap->array = (struct MinHeapNode**)malloc(minHeap->capacity * sizeof(struct MinHeapNode*));
+    return minHeap;
 }
 
-void swapMinTreeNode(struct MinTreeNode** a, struct MinTreeNode** b) {
-  struct MinTreeNode* t = *a;
-  *a = *b;
-  *b = t;
+void swapMinHeapNode(struct MinHeapNode** a, struct MinHeapNode** b) {
+    struct MinHeapNode* t = *a;
+    *a = *b;
+    *b = t;
 }
 
 void minHeapify(struct MinHeap* minHeap, int idx) {
-  int smallest = idx;
-  int left = 2 * idx + 1;
-  int right = 2 * idx + 2;
+    int smallest = idx;
+    int left = 2 * idx + 1;
+    int right = 2 * idx + 2;
 
-  if (left < minHeap->size && minHeap->array[left]->frequency < minHeap->array[smallest]->frequency)
-    smallest = left;
+    if (left < minHeap->size && minHeap->array[left]->freq < minHeap->array[smallest]->freq)
+        smallest = left;
 
-  if (right < minHeap->size && minHeap->array[right]->frequency < minHeap->array[smallest]->frequency)
-    smallest = right;
+    if (right < minHeap->size && minHeap->array[right]->freq < minHeap->array[smallest]->freq)
+        smallest = right;
 
-  if (smallest != idx) {
-    swapMinTreeNode(&minHeap->array[smallest], &minHeap->array[idx]);
-    minHeapify(minHeap, smallest);
-  }
+    if (smallest != idx) {
+        swapMinHeapNode(&minHeap->array[smallest], &minHeap->array[idx]);
+        minHeapify(minHeap, smallest);
+    }
 }
 
 int isSizeOne(struct MinHeap* minHeap) {
-  return (minHeap->size == 1);
+    return (minHeap->size == 1);
 }
 
-struct MinTreeNode* extractMin(struct MinHeap* minHeap) {
-  struct MinTreeNode* temp = minHeap->array[0];
-  minHeap->array[0] = minHeap->array[minHeap->size - 1];
-  --minHeap->size;
-  minHeapify(minHeap, 0);
-  return temp;
+struct MinHeapNode* extractMin(struct MinHeap* minHeap) {
+    struct MinHeapNode* temp = minHeap->array[0];
+    minHeap->array[0] = minHeap->array[minHeap->size - 1];
+    --minHeap->size;
+    minHeapify(minHeap, 0);
+    return temp;
 }
 
-void insertMinHeap(struct MinHeap* minHeap, struct MinTreeNode* minTreeNode) {
-  ++minHeap->size;
-  int i = minHeap->size - 1;
-
-  while (i && minTreeNode->frequency < minHeap->array[(i - 1) / 2]->frequency) {
-    minHeap->array[i] = minHeap->array[(i - 1) / 2];
-    i = (i - 1) / 2;
-  }
-  minHeap->array[i] = minTreeNode;
+void insertMinHeap(struct MinHeap* minHeap, struct MinHeapNode* minHeapNode) {
+    ++minHeap->size;
+    int i = minHeap->size - 1;
+    while (i && minHeapNode->freq < minHeap->array[(i - 1) / 2]->freq) {
+        minHeap->array[i] = minHeap->array[(i - 1) / 2];
+        i = (i - 1) / 2;
+    }
+    minHeap->array[i] = minHeapNode;
 }
 
 void buildMinHeap(struct MinHeap* minHeap) {
-  int n = minHeap->size - 1;
-  for (int i = (n - 1) / 2; i >= 0; --i)
-    minHeapify(minHeap, i);
+    int n = minHeap->size - 1;
+    int i;
+    for (i = (n - 1) / 2; i >= 0; --i)
+        minHeapify(minHeap, i);
+}
+
+void printArr(int arr[], int n) {
+    int i;
+    for (i = 0; i < n; ++i)
+        printf("%d", arr[i]);
+    printf("\n");
+}
+
+int isLeaf(struct MinHeapNode* root) {
+    return !(root->left) && !(root->right);
 }
 
 struct MinHeap* createAndBuildMinHeap(char data[], int freq[], int size) {
-  struct MinHeap* minHeap = createMinHeap(size);
-  for (int i = 0; i < size; ++i)
-    minHeap->array[i] = createNode(data[i], freq[i]);
-  minHeap->size = size;
-  buildMinHeap(minHeap);
-  return minHeap;
+    struct MinHeap* minHeap = createMinHeap(size);
+    for (int i = 0; i < size; ++i)
+        minHeap->array[i] = newNode(data[i], freq[i]);
+    minHeap->size = size;
+    buildMinHeap(minHeap);
+    return minHeap;
 }
 
-struct MinTreeNode* buildHuffmanTree(char data[], int freq[], int size) {
-  struct MinTreeNode *left, *right, *top;
-  struct MinHeap* minHeap = createAndBuildMinHeap(data, freq, size);
-
-  while (!isSizeOne(minHeap)) {
-    left = extractMin(minHeap);
-    right = extractMin(minHeap);
-    top = createNode('$', left->frequency + right->frequency);
-    top->left = left;
-    top->right = right;
-    insertMinHeap(minHeap, top);
-  }
-  return extractMin(minHeap);
+struct MinHeapNode* buildHuffmanTree(char data[], int freq[], int size) {
+    struct MinHeapNode *left, *right, *top;
+    struct MinHeap* minHeap = createAndBuildMinHeap(data, freq, size);
+    while (!isSizeOne(minHeap)) {
+        left = extractMin(minHeap);
+        right = extractMin(minHeap);
+        top = newNode('$', left->freq + right->freq);
+        top->left = left;
+        top->right = right;
+        insertMinHeap(minHeap, top);
+    }
+    return extractMin(minHeap);
 }
 
-void printCodes(struct MinTreeNode* root, int arr[], int top) {
-  if (root->left) {
-    arr[top] = 0;
-    printCodes(root->left, arr, top + 1);
-  }
-  if (root->right) {
-    arr[top] = 1;
-    printCodes(root->right, arr, top + 1);
-  }
-  if (!(root->left) && !(root->right)) {
-    printf("%c: ", root->data);
-    for (int i = 0; i < top; ++i)
-      printf("%d", arr[i]);
-    printf("\n");
-  }
+void printCodes(struct MinHeapNode* root, int arr[], int top) {
+    if (root->left) {
+        arr[top] = 0;
+        printCodes(root->left, arr, top + 1);
+    }
+    if (root->right) {
+        arr[top] = 1;
+        printCodes(root->right, arr, top + 1);
+    }
+    if (isLeaf(root)) {
+        printf("  %c   |   %2d   |   ", root->data, root->freq);
+        printArr(arr, top);
+    }
 }
 
 void HuffmanCodes(char data[], int freq[], int size) {
-  struct MinTreeNode* root = buildHuffmanTree(data, freq, size);
-  int arr[MAX_TREE_HT], top = 0;
-  printCodes(root, arr, top);
+    struct MinHeapNode* root = buildHuffmanTree(data, freq, size);
+    int arr[MAX_TREE_HT], top = 0;
+    printf("\nChar  |  Freq  |  Huffman Code\n");
+    printf("-----------------------------\n");
+    printCodes(root, arr, top);
 }
 
 int main() {
-  char arr[] = {'a', 'b', 'c', 'd', 'e', 'f'};
-  int freq[] = {5, 9, 12, 13, 16, 45};
-  int size = sizeof(arr) / sizeof(arr[0]);
+    char str[MAX_STR_LEN];
+    int freq_map[ASCII_SIZE] = {0};
 
-  printf("Huffman Codes:\n");
-  HuffmanCodes(arr, freq, size);
-  return 0;
+    printf("Enter the input string: ");
+    if (fgets(str, sizeof(str), stdin) == NULL) {
+        printf("Error reading input.\n");
+        return 1;
+    }
+
+    // Remove trailing newline character if present
+    size_t len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n') {
+        str[len - 1] = '\0';
+        len--;
+    }
+
+    if (len == 0) {
+        printf("Empty string entered.\n");
+        return 1;
+    }
+
+    // Calculate frequency of each unique character
+    for (size_t i = 0; i < len; i++) {
+        freq_map[(unsigned char)str[i]]++;
+    }
+
+    // Count unique characters
+    int unique_count = 0;
+    for (int i = 0; i < ASCII_SIZE; i++) {
+        if (freq_map[i] > 0) {
+            unique_count++;
+        }
+    }
+
+    char* arr = (char*)malloc(unique_count * sizeof(char));
+    int* freq = (int*)malloc(unique_count * sizeof(int));
+
+    int index = 0;
+    for (int i = 0; i < ASCII_SIZE; i++) {
+        if (freq_map[i] > 0) {
+            arr[index] = (char)i;
+            freq[index] = freq_map[i];
+            index++;
+        }
+    }
+
+    HuffmanCodes(arr, freq, unique_count);
+
+    free(arr);
+    free(freq);
+    return 0;
 }
-
-/*
-   ===================================================================
-
-   OUTPUT
-
-   CS2024PG01@csserver:~/pg2026/ads/ADS-lab/record$ ./a.out
-Enter the input string: i have never even tried to be a good person
-
-Char  |  Freq  |  Huffman Code
------------------------------
-  e   |    8   |   00
-      |    9   |   01
-  p   |    1   |   10000
-  b   |    1   |   10001
-  h   |    1   |   10010
-  d   |    2   |   10011
-  v   |    3   |   1010
-  n   |    3   |   1011
-  r   |    3   |   1100
-  t   |    2   |   11010
-  g   |    1   |   110110
-  s   |    1   |   110111
-  i   |    2   |   11100
-  a   |    2   |   11101
-  o   |    4   |   1111
-*/
