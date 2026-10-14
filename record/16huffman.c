@@ -1,3 +1,25 @@
+/*
+   ===================================================================
+NAME: Saviyo Thomas
+ROLL NO: CS11
+DATE: 13/07/2026
+EXPERIMENT NO: 05
+
+ALGORITHM: Huffman Coding (Data Compression)
+1. Read the input string and compute the frequency of each unique character using a frequency map.
+2. Create a leaf node for each unique character containing its character and frequency, and build a Min-Heap of these nodes.
+3. Repeat the following steps while the size of the Min-Heap is greater than 1:
+   a. Extract the two nodes with the minimum frequencies from the Min-Heap.
+   b. Create a new internal node with a special character (e.g., '$') and a frequency equal to the sum of the two extracted nodes' frequencies.
+   c. Set the left child of the new node to the first extracted node and the right child to the second extracted node.
+   d. Insert the newly created internal node back into the Min-Heap.
+4. The last remaining node in the Min-Heap becomes the root of the Huffman Tree.
+5. Traverse the Huffman Tree recursively from root to leaves:
+   a. Append '0' for the left branch and '1' for the right branch.
+   b. Print the corresponding Huffman code when a leaf node containing a valid character is reached.
+===================================================================
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
