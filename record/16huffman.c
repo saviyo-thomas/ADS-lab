@@ -5,7 +5,7 @@ ROLL NO: CS11
 DATE: 13/07/2026
 EXPERIMENT NO: 05
 
-ALGORITHM: Huffman Coding (Data Compression)
+ALGORITHM: Huffman Coding (Data Compression) with Sorted Output
 1. Read the input string and compute the frequency of each unique character using a frequency map.
 2. Create a leaf node for each unique character containing its character and frequency, and build a Min-Heap of these nodes.
 3. Repeat the following steps while the size of the Min-Heap is greater than 1:
@@ -14,9 +14,9 @@ ALGORITHM: Huffman Coding (Data Compression)
    c. Set the left child of the new node to the first extracted node and the right child to the second extracted node.
    d. Insert the newly created internal node back into the Min-Heap.
 4. The last remaining node in the Min-Heap becomes the root of the Huffman Tree.
-5. Traverse the Huffman Tree recursively from root to leaves:
-   a. Append '0' for the left branch and '1' for the right branch.
-   b. Print the corresponding Huffman code when a leaf node containing a valid character is reached.
+5. Traverse the Huffman Tree recursively to collect all leaf nodes along with their binary Huffman codes.
+6. Sort the collected entries in descending order of frequency (highest frequency at the top, lowest frequency at the bottom).
+7. Print the final sorted table containing characters, frequencies, and their Huffman codes.
 ===================================================================
 */
 
@@ -38,6 +38,13 @@ struct MinHeap {
     unsigned size;
     unsigned capacity;
     struct MinHeapNode** array;
+};
+
+struct CodeEntry {
+    char data;
+    unsigned freq;
+    int code[MAX_TREE_HT];
+    int code_len;
 };
 
 struct MinHeapNode* newNode(char data, unsigned freq) {
@@ -108,13 +115,6 @@ void buildMinHeap(struct MinHeap* minHeap) {
         minHeapify(minHeap, i);
 }
 
-void printArr(int arr[], int n) {
-    int i;
-    for (i = 0; i < n; ++i)
-        printf("%d", arr[i]);
-    printf("\n");
-}
-
 int isLeaf(struct MinHeapNode* root) {
     return !(root->left) && !(root->right);
 }
@@ -142,27 +142,56 @@ struct MinHeapNode* buildHuffmanTree(char data[], int freq[], int size) {
     return extractMin(minHeap);
 }
 
-void printCodes(struct MinHeapNode* root, int arr[], int top) {
+// Recursively collect all leaf nodes and their codes into an array
+void collectCodes(struct MinHeapNode* root, int arr[], int top, struct CodeEntry entries[], int *count) {
     if (root->left) {
         arr[top] = 0;
-        printCodes(root->left, arr, top + 1);
+        collectCodes(root->left, arr, top + 1, entries, count);
     }
     if (root->right) {
         arr[top] = 1;
-        printCodes(root->right, arr, top + 1);
+        collectCodes(root->right, arr, top + 1, entries, count);
     }
     if (isLeaf(root)) {
-        printf("  %c   |   %2d   |   ", root->data, root->freq);
-        printArr(arr, top);
+        entries[*count].data = root->data;
+        entries[*count].freq = root->freq;
+        entries[*count].code_len = top;
+        for (int i = 0; i < top; i++) {
+            entries[*count].code[i] = arr[i];
+        }
+        (*count)++;
     }
 }
 
 void HuffmanCodes(char data[], int freq[], int size) {
     struct MinHeapNode* root = buildHuffmanTree(data, freq, size);
     int arr[MAX_TREE_HT], top = 0;
+    
+    struct CodeEntry entries[ASCII_SIZE];
+    int count = 0;
+    
+    collectCodes(root, arr, top, entries, &count);
+    
+    // Sort entries in descending order of frequency (highest freq at top, lowest at bottom)
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = 0; j < count - i - 1; j++) {
+            if (entries[j].freq < entries[j + 1].freq) {
+                struct CodeEntry temp = entries[j];
+                entries[j] = entries[j + 1];
+                entries[j + 1] = temp;
+            }
+        }
+    }
+    
     printf("\nChar  |  Freq  |  Huffman Code\n");
     printf("-----------------------------\n");
-    printCodes(root, arr, top);
+    for (int i = 0; i < count; i++) {
+        printf("  %c   |   %2d   |   ", entries[i].data, entries[i].freq);
+        for (int j = 0; j < entries[i].code_len; j++) {
+            printf("%d", entries[i].code[j]);
+        }
+        printf("\n");
+    }
 }
 
 int main() {
