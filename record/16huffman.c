@@ -28,48 +28,48 @@ ALGORITHM: Huffman Coding (Data Compression) with Sorted Output
 #define MAX_STR_LEN 1000
 #define ASCII_SIZE 256
 
-struct MinHeapNode {
+typedef struct MinHeapNode {
     char data;
     unsigned freq;
     struct MinHeapNode *left, *right;
-};
+}mhnode;
 
-struct MinHeap {
+typedef struct MinHeap {
     unsigned size;
     unsigned capacity;
-    struct MinHeapNode** array;
-};
+    mhnode** array;
+}mh;
 
-struct CodeEntry {
+typedef struct CodeEntry {
     char data;
     unsigned freq;
     int code[MAX_TREE_HT];
     int code_len;
-};
+}ce;
 
-struct MinHeapNode* newNode(char data, unsigned freq) {
-    struct MinHeapNode* temp = (struct MinHeapNode*)malloc(sizeof(struct MinHeapNode));
+mhnode* newNode(char data, unsigned freq) {
+    mhnode* temp = (mhnode*)malloc(sizeof(mhnode));
     temp->left = temp->right = NULL;
     temp->data = data;
     temp->freq = freq;
     return temp;
 }
 
-struct MinHeap* createMinHeap(unsigned capacity) {
-    struct MinHeap* minHeap = (struct MinHeap*)malloc(sizeof(struct MinHeap));
+mh* createMinHeap(unsigned capacity) {
+    mh* minHeap = (mh*)malloc(sizeof(mh));
     minHeap->size = 0;
     minHeap->capacity = capacity;
-    minHeap->array = (struct MinHeapNode**)malloc(minHeap->capacity * sizeof(struct MinHeapNode*));
+    minHeap->array = (mhnode**)malloc(minHeap->capacity * sizeof(mhnode*));
     return minHeap;
 }
 
-void swapMinHeapNode(struct MinHeapNode** a, struct MinHeapNode** b) {
-    struct MinHeapNode* t = *a;
+void swapMinHeapNode(mhnode** a, mhnode** b) {
+    mhnode* t = *a;
     *a = *b;
     *b = t;
 }
 
-void minHeapify(struct MinHeap* minHeap, int idx) {
+void minHeapify(mh* minHeap, int idx) {
     int smallest = idx;
     int left = 2 * idx + 1;
     int right = 2 * idx + 2;
@@ -86,19 +86,19 @@ void minHeapify(struct MinHeap* minHeap, int idx) {
     }
 }
 
-int isSizeOne(struct MinHeap* minHeap) {
+int isSizeOne(mh* minHeap) {
     return (minHeap->size == 1);
 }
 
-struct MinHeapNode* extractMin(struct MinHeap* minHeap) {
-    struct MinHeapNode* temp = minHeap->array[0];
+mhnode* extractMin(mh* minHeap) {
+    mhnode* temp = minHeap->array[0];
     minHeap->array[0] = minHeap->array[minHeap->size - 1];
     --minHeap->size;
     minHeapify(minHeap, 0);
     return temp;
 }
 
-void insertMinHeap(struct MinHeap* minHeap, struct MinHeapNode* minHeapNode) {
+void insertMinHeap(mh* minHeap, mhnode* minHeapNode) {
     ++minHeap->size;
     int i = minHeap->size - 1;
     while (i && minHeapNode->freq < minHeap->array[(i - 1) / 2]->freq) {
@@ -108,19 +108,19 @@ void insertMinHeap(struct MinHeap* minHeap, struct MinHeapNode* minHeapNode) {
     minHeap->array[i] = minHeapNode;
 }
 
-void buildMinHeap(struct MinHeap* minHeap) {
+void buildMinHeap(mh* minHeap) {
     int n = minHeap->size - 1;
     int i;
     for (i = (n - 1) / 2; i >= 0; --i)
         minHeapify(minHeap, i);
 }
 
-int isLeaf(struct MinHeapNode* root) {
+int isLeaf(mhnode* root) {
     return !(root->left) && !(root->right);
 }
 
-struct MinHeap* createAndBuildMinHeap(char data[], int freq[], int size) {
-    struct MinHeap* minHeap = createMinHeap(size);
+mh* createAndBuildMinHeap(char data[], int freq[], int size) {
+    mh* minHeap = createMinHeap(size);
     for (int i = 0; i < size; ++i)
         minHeap->array[i] = newNode(data[i], freq[i]);
     minHeap->size = size;
@@ -128,9 +128,9 @@ struct MinHeap* createAndBuildMinHeap(char data[], int freq[], int size) {
     return minHeap;
 }
 
-struct MinHeapNode* buildHuffmanTree(char data[], int freq[], int size) {
-    struct MinHeapNode *left, *right, *top;
-    struct MinHeap* minHeap = createAndBuildMinHeap(data, freq, size);
+mhnode* buildHuffmanTree(char data[], int freq[], int size) {
+    mhnode *left, *right, *top;
+    mh* minHeap = createAndBuildMinHeap(data, freq, size);
     while (!isSizeOne(minHeap)) {
         left = extractMin(minHeap);
         right = extractMin(minHeap);
@@ -143,7 +143,7 @@ struct MinHeapNode* buildHuffmanTree(char data[], int freq[], int size) {
 }
 
 // Recursively collect all leaf nodes and their codes into an array
-void collectCodes(struct MinHeapNode* root, int arr[], int top, struct CodeEntry entries[], int *count) {
+void collectCodes(mhnode* root, int arr[], int top, ce entries[], int *count) {
     if (root->left) {
         arr[top] = 0;
         collectCodes(root->left, arr, top + 1, entries, count);
@@ -164,10 +164,10 @@ void collectCodes(struct MinHeapNode* root, int arr[], int top, struct CodeEntry
 }
 
 void HuffmanCodes(char data[], int freq[], int size) {
-    struct MinHeapNode* root = buildHuffmanTree(data, freq, size);
+    mhnode* root = buildHuffmanTree(data, freq, size);
     int arr[MAX_TREE_HT], top = 0;
     
-    struct CodeEntry entries[ASCII_SIZE];
+    ce entries[ASCII_SIZE];
     int count = 0;
     
     collectCodes(root, arr, top, entries, &count);
@@ -176,7 +176,7 @@ void HuffmanCodes(char data[], int freq[], int size) {
     for (int i = 0; i < count - 1; i++) {
         for (int j = 0; j < count - i - 1; j++) {
             if (entries[j].freq < entries[j + 1].freq) {
-                struct CodeEntry temp = entries[j];
+                ce temp = entries[j];
                 entries[j] = entries[j + 1];
                 entries[j + 1] = temp;
             }
